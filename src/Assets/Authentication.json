@@ -25,65 +25,128 @@
       "id": 3
     }
   ],
-  "userTasks": {
-    "userId": "1",
-    "tasks": {
-      "backlog": [
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        },
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        }
-      ],
-      "toDo": [
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        },
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        }
-      ],
-      "onGoing": [
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        },
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        }
-      ],
-      "done": [
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        },
-        {
-          "taskId": "",
-          "taskName": "",
-          "priority": "",
-          "deadline": ""
-        }
-      ]
+  "userTasks": [
+    {
+      "userId": "1",
+      "tasks": {
+        "backlog": [
+          {
+            "taskId": "",
+            "taskName": "backlog1",
+            "priority": "",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "backlog2",
+            "priority": "",
+            "deadline": ""
+          }
+        ],
+        "toDo": [
+          {
+            "taskId": "",
+            "taskName": "todo1",
+            "priority": "",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "todo2",
+            "priority": "",
+            "deadline": ""
+          }
+        ],
+        "onGoing": [
+          {
+            "taskId": "",
+            "taskName": "onGOing1",
+            "priority": "onGOing2",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "",
+            "priority": "",
+            "deadline": ""
+          }
+        ],
+        "done": [
+          {
+            "taskId": "",
+            "taskName": "",
+            "priority": "",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "",
+            "priority": "",
+            "deadline": ""
+          }
+        ]
+      }
+    },
+    {
+      "userId": "3",
+      "tasks": {
+        "backlog": [
+          {
+            "taskId": "",
+            "taskName": "2ndback",
+            "priority": "",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "2nd back",
+            "priority": "",
+            "deadline": ""
+          }
+        ],
+        "toDo": [
+          {
+            "taskId": "",
+            "taskName": "2endtot",
+            "priority": "",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "2ndtodo",
+            "priority": "",
+            "deadline": ""
+          }
+        ],
+        "onGoing": [
+          {
+            "taskId": "",
+            "taskName": "2ndsdf",
+            "priority": "",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "2dnfasd",
+            "priority": "",
+            "deadline": ""
+          }
+        ],
+        "done": [
+          {
+            "taskId": "",
+            "taskName": "2bsaf",
+            "priority": "",
+            "deadline": ""
+          },
+          {
+            "taskId": "",
+            "taskName": "2asdf",
+            "priority": "",
+            "deadline": ""
+          }
+        ]
+      }
     }
-  }
+  ]
 }

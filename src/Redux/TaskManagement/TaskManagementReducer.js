@@ -1,6 +1,7 @@
 import { FETCH_SUCESSFUL } from "./TaskManagementTypes";
 const intialState = {
-  data: null,
+  loading: true,
+  tasks: null,
 };
 const TaskManagementReducer = (state = intialState, action) => {
   const { type, payload } = action;
@@ -8,7 +9,8 @@ const TaskManagementReducer = (state = intialState, action) => {
     case FETCH_SUCESSFUL:
       return {
         ...state,
-        data: payload,
+        loading: false,
+        tasks: payload,
       };
     default:
       return state;
