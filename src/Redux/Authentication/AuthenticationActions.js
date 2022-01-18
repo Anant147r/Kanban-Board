@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   // LOGIN,
+  LOGIN_SUCCESS,
   REGISTER,
 } from "./AuthenticationTypes";
 // import { REGISTER } from "./AuthenticationTypes";
@@ -13,9 +14,10 @@ export const login = (data) => async (dispatch) => {
     const data = res.data;
     var count = 0;
     for (let item of data) {
-      if (item.email === email && item.password === password)
+      if (item.email === email && item.password === password) {
         console.log("User exists");
-      else count++;
+        dispatch({ type: LOGIN_SUCCESS, payload: item.id });
+      } else count++;
     }
     if (count === res.data.length) console.log("User do not exists");
   } catch (err) {

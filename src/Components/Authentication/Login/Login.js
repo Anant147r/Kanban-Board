@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../Redux/Authentication/AuthenticationActions";
 // import axios from "axios";
@@ -18,7 +19,6 @@ const Login = ({ state, loginUser }) => {
     } catch (err) {
       console.log(err);
     }
-
     // console.log(email, password);
     // axios
     //   .get("http://localhost:3000/employees")
@@ -29,6 +29,14 @@ const Login = ({ state, loginUser }) => {
     //     console.log(err);
     //   });
   };
+
+  useEffect(() => {
+    if (state.isAuthenticated === true) {
+      // console.log("asdfasdfasdf");
+      // <Redirect to="/dashboard" />;
+      window.open("/dashboard", "_self");
+    }
+  }, [state.isAuthenticated]);
   return (
     <div>
       <form onSubmit={submitHandler}>
