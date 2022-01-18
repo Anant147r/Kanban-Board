@@ -1,5 +1,8 @@
 import axios from "axios";
-import { LOGIN, REGISTER } from "./AuthenticationTypes";
+import {
+  // LOGIN,
+  REGISTER,
+} from "./AuthenticationTypes";
 // import { REGISTER } from "./AuthenticationTypes";
 
 export const login = (data) => async (dispatch) => {

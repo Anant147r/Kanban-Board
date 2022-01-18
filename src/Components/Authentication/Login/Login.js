@@ -11,8 +11,14 @@ const Login = ({ state, loginUser }) => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    const res = await loginUser({ email, password });
-    clearStateValues();
+    try {
+      const res = await loginUser({ email, password });
+      clearStateValues();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+
     // console.log(email, password);
     // axios
     //   .get("http://localhost:3000/employees")
