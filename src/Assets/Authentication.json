@@ -9,11 +9,25 @@
       "id": 1
     }
   ],
-  "tasks": {
-    "id": "",
-    "backlog": [],
-    "toDo": [],
-    "onGoing": [],
-    "done": []
+  "userTasks": {
+    "userId": "",
+    "tasks": {
+      "backlog": [
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+      ],
+      "toDo": [
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+      ],
+      "onGoing": [
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+      ],
+      "done": [
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
+        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+      ]
+    }
   }
 }
