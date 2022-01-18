@@ -7,26 +7,82 @@
       "number": "1111222255",
       "password": "123456",
       "id": 1
+    },
+    {
+      "name": "Anant Rawat2",
+      "userName": "Anant Rawat 2",
+      "email": "anant2.rawat2@gmail.com",
+      "number": "32465465135",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "name": "Anant Rawat3",
+      "userName": "Anant Rawat 3",
+      "email": "anant3.rawat3@gmail.com",
+      "number": "2222222222",
+      "password": "123456",
+      "id": 3
     }
   ],
   "userTasks": {
     "userId": "",
     "tasks": {
       "backlog": [
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        },
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        }
       ],
       "toDo": [
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        },
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        }
       ],
       "onGoing": [
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        },
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        }
       ],
       "done": [
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" },
-        { "taskId": "", "taskName": "", "priority": "", "deadline": "" }
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        },
+        {
+          "taskId": "",
+          "taskName": "",
+          "priority": "",
+          "deadline": ""
+        }
       ]
     }
   }

@@ -2,7 +2,8 @@ import axios from "axios";
 import {
   // LOGIN,
   LOGIN_SUCCESS,
-  REGISTER,
+  // REGISTER,
+  REGISTER_SUCCESS,
 } from "./AuthenticationTypes";
 // import { REGISTER } from "./AuthenticationTypes";
 
@@ -38,6 +39,8 @@ export const register = (data) => async (dispatch) => {
       password,
     });
     console.log("Done");
-    dispatch({ type: REGISTER, payload: res });
+    console.log(res);
+    dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });
+    window.open("/dashboard", "_self");
   } catch (err) {}
 };

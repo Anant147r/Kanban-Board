@@ -1,5 +1,9 @@
 // import React from "react";
-import { REGISTER, LOGIN_SUCCESS } from "./AuthenticationTypes";
+import {
+  REGISTER,
+  LOGIN_SUCCESS,
+  REGISTER_SUCCESS,
+} from "./AuthenticationTypes";
 const intialState = {
   isAuthenticated: false,
   loading: true,
@@ -8,6 +12,7 @@ const intialState = {
 const AuthenticationReducer = (state = intialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       return {
         ...state,
