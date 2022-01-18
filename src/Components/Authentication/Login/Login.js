@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -6,14 +7,14 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     // console.log(email, password);
-    axios
-      .get("http://localhost:3000/employees")
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .get("http://localhost:3000/employees")
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
   return (
     <div>
@@ -62,4 +63,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {};
+
+const mapDispatchToProps = (dispatch) => {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
