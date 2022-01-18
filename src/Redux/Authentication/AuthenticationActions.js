@@ -6,7 +6,15 @@ export const login = (data) => async (dispatch) => {
   const { email, password } = data;
   try {
     const res = await axios.get("http://localhost:3000/employees");
-    console.log(res);
+    // console.log(res);
+    const data = res.data;
+    var count = 0;
+    for (let item of data) {
+      if (item.email === email && item.password === password)
+        console.log("User exists");
+      else count++;
+    }
+    if (count === res.data.length) console.log("User do not exists");
   } catch (err) {
     console.log(err);
   }

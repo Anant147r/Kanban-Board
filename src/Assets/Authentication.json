@@ -15,6 +15,22 @@
       "number": "222234234",
       "password": "asdf",
       "id": 11
+    },
+    {
+      "name": "anant",
+      "userName": "anant",
+      "email": "anant.rawat@gmail.com",
+      "number": "32465465135",
+      "password": "123456",
+      "id": 12
+    },
+    {
+      "name": "anant2",
+      "userName": "anant2",
+      "email": "anant2.rawat@gmail.com",
+      "number": "32465465135",
+      "password": "123456",
+      "id": 13
     }
   ]
 }

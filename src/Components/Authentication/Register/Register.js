@@ -9,9 +9,18 @@ const Register = ({ state, registerUser }) => {
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
 
+  const clearStateValues = () => {
+    setName("");
+    setUserName("");
+    setEmail("");
+    setNumber("");
+    setPassword("");
+  };
+
   const submitHandler = async (event) => {
     event.preventDefault();
-    registerUser({ name, userName, email, number, password });
+    const res = await registerUser({ name, userName, email, number, password });
+    clearStateValues();
     // console.log("Hello32");
     // const res = await axios.post("http://localhost:3000/employees", {
     //   name,

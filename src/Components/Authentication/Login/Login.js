@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
-const Login = () => {
+import { login } from "../../../Redux/Authentication/AuthenticationActions";
+// import axios from "axios";
+const Login = ({ state, loginUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const submitHandler = (event) => {
+  const clearStateValues = () => {
+    setEmail("");
+    setPassword("");
+  };
+  const submitHandler = async (event) => {
     event.preventDefault();
+    const res = await loginUser({ email, password });
+    clearStateValues();
     // console.log(email, password);
     // axios
     //   .get("http://localhost:3000/employees")
@@ -63,8 +70,18 @@ const Login = () => {
   );
 };
 
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state) => {
+  return {
+    state: state.AuthenticationReducer,
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (data) => {
+      dispatch(login(data));
+    },
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
