@@ -1,5 +1,9 @@
-import React from "react";
-const Dashboard = () => {
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+const Dashboard = ({ state }) => {
+  useEffect(() => {
+    console.log(state.data);
+  }, [state.data]);
   return (
     <div>
       <table className="table table-striped">
@@ -39,4 +43,9 @@ const Dashboard = () => {
     </div>
   );
 };
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return {
+    state: state.TaskManagementReducer,
+  };
+};
+export default connect(mapStateToProps)(Dashboard);

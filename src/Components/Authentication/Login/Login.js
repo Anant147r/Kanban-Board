@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../Redux/Authentication/AuthenticationActions";
 // import axios from "axios";
 const Login = ({ state, loginUser }) => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const clearStateValues = () => {
@@ -32,11 +33,11 @@ const Login = ({ state, loginUser }) => {
 
   useEffect(() => {
     if (state.isAuthenticated === true) {
-      // console.log("asdfasdfasdf");
-      // <Redirect to="/dashboard" />;
-      window.open("/dashboard", "_self");
+      // window.open("/dashboard", "_self");
+      history.push("/dashboard");
     }
   }, [state.isAuthenticated]);
+
   return (
     <div>
       <form onSubmit={submitHandler}>

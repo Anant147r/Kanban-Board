@@ -5,12 +5,17 @@ import {
   // REGISTER,
   REGISTER_SUCCESS,
 } from "./AuthenticationTypes";
+// import { fetchUserTask } from "../TaskManagement/TaskManagementActions";
+import { FETCH_SUCESSFUL } from "../TaskManagement/TaskManagementTypes";
+// import { FETCH_USER_TASKS } from "../TaskManagement/TaskManagementTypes";
+// import { FETCH_USER_TASKS } from "../TaksManagement/TaskManagementTypes";
 // import { REGISTER } from "./AuthenticationTypes";
-
+// import fsdf from
 export const login = (data) => async (dispatch) => {
   const { email, password } = data;
   try {
     const res = await axios.get("http://localhost:3000/employees");
+    // window.open("http://localhost:3000/userTasks", "_blank");
     // console.log(res);
     const data = res.data;
     var count = 0;
@@ -18,6 +23,10 @@ export const login = (data) => async (dispatch) => {
       if (item.email === email && item.password === password) {
         console.log("User exists");
         dispatch({ type: LOGIN_SUCCESS, payload: item.id });
+
+        const taskResponse = await axios.get("http://localhost:3000/userTasks");
+
+        dispatch({ type: FETCH_SUCESSFUL, payload: taskResponse.data });
       } else count++;
     }
     if (count === res.data.length) console.log("User do not exists");

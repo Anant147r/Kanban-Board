@@ -6,6 +6,7 @@ import {
 } from "./AuthenticationTypes";
 const intialState = {
   isAuthenticated: false,
+  activeUser: null,
   loading: true,
   data: null,
 };
@@ -17,6 +18,7 @@ const AuthenticationReducer = (state = intialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
+        activeUser: payload,
         loading: false,
         data: payload,
       };
