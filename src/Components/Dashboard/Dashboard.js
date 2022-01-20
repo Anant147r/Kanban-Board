@@ -139,7 +139,16 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                 {userTasks &&
                   userTasks.map((item, index) => {
                     if (item.stage == 0) {
-                      return <li key={index}>{item.taskName}</li>;
+                      return (
+                        <li key={index}>
+                          <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button className="btn btn-success">
+                            Previous
+                          </button>{" "}
+                          <button className="btn btn-success">Next</button>
+                        </li>
+                      );
                     } else {
                       return null;
                     }
@@ -152,7 +161,16 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                 {userTasks &&
                   userTasks.map((item, index) => {
                     if (item.stage == 1) {
-                      return <li key={index}>{item.taskName}</li>;
+                      return (
+                        <li key={index}>
+                          <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button className="btn btn-success">
+                            Previous
+                          </button>{" "}
+                          <button className="btn btn-success">Next</button>
+                        </li>
+                      );
                     } else {
                       return null;
                     }
@@ -165,7 +183,16 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                 {userTasks &&
                   userTasks.map((item, index) => {
                     if (item.stage == 2) {
-                      return <li key={index}>{item.taskName}</li>;
+                      return (
+                        <li key={index}>
+                          <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button className="btn btn-success">
+                            Previous
+                          </button>{" "}
+                          <button className="btn btn-success">Next</button>
+                        </li>
+                      );
                     } else {
                       return null;
                     }
@@ -178,7 +205,16 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                 {userTasks &&
                   userTasks.map((item, index) => {
                     if (item.stage == 3) {
-                      return <li key={index}>{item.taskName}</li>;
+                      return (
+                        <li key={index}>
+                          <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button className="btn btn-success">
+                            Previous
+                          </button>{" "}
+                          <button className="btn btn-success">Next</button>
+                        </li>
+                      );
                     } else {
                       return null;
                     }

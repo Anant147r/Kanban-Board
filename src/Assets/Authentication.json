@@ -31,6 +31,14 @@
       "number": "1111222255",
       "password": "123456",
       "id": 4
+    },
+    {
+      "name": "Anant Rawat",
+      "userName": "Mon2",
+      "email": "anant6.rawat6@gmail.com",
+      "number": "32465465135",
+      "password": "123456",
+      "id": 5
     }
   ],
   "userTasks": [
@@ -129,6 +137,14 @@
       "deadLine": "22",
       "stage": "2",
       "id": 13
+    },
+    {
+      "userId": 5,
+      "taskName": "Dummy Task",
+      "priority": "155",
+      "deadLine": "sdf",
+      "stage": "3",
+      "id": 14
     }
   ]
 }
