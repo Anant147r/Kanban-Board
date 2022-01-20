@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { fetchUserTask } from "../../Redux/TaskManagement/TaskManagementActions";
-import { FETCH_SUCESSFUL } from "../../Redux/TaskManagement/TaskManagementTypes";
+import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
 const Dashboard = ({
   tasks,
   activeUser,
@@ -15,33 +15,39 @@ const Dashboard = ({
   const [onGoing, setOnGoing] = useState([]);
   const [done, setDone] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(async () => {
-    // fetchUserTasks();
-
-    // console.log(tasks);
+  const [userTasks, setUserTasks] = useState([]);
+  // const backlog = [];
+  // const toDo = [];
+  // const onGoing = [];
+  // const done = [];
+  const fetchTasks = async () => {
     try {
       const res = await axios.get("http://localhost:3000/userTasks");
-      console.log(res.data);
-
-      // console.log(res.data);
-      // dispatch({ type: FETCH_SUCESSFUL, payload: res.data });
-      // res.data.forEach((task, index) => {
-      //   if (task.userId == activeUser) {
-      //     setBacklog(task.tasks.backlog);
-      //     setToDo(task.tasks.toDo);
-      //     setOnGoing(task.tasks.onGoing);
-      //     setDone(task.tasks.done);
-      //   }
-      // });
-
-      setToDo(["asdfa", "asdf", "asdfasdf", "asdfadf"]);
-
-      setBacklog(["asd", "asdsdfasdf", "asdfasd"]);
-      setOnGoing(["asdfa", "asdf"]);
-      setDone(["asdf", "asdfasd"]);
+      res.data.forEach((item, index) => {
+        if (item.userId == activeUser) {
+          setUserTasks(item.tasks);
+          // console.log(item.tasks);
+          // item.tasks.forEach((task, index) => {
+          //   if (task.stage === 0) {
+          //     setBacklog([...backlog, task.taskName]);
+          //   } else if (task.stage === 1) {
+          //     setToDo([...toDo, task.taskName]);
+          //   } else if (task.stage === 2) {
+          //     setOnGoing([...onGoing, task.taskName]);
+          //   } else if (task.stage === 3) {
+          //     setDone([...done, task.taskName]);
+          //   }
+          // });
+        }
+      });
       setLoading(false);
-      // console.log(backlog);
     } catch (err) {}
+  };
+  // fetchTasks();
+  // fetchTasks();
+  useEffect(() => {
+    // console.log(tasks);
+    fetchTasks();
   }, []);
 
   return (
@@ -49,38 +55,101 @@ const Dashboard = ({
       {loading ? (
         <div>Loading</div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
-          <div>
-            <div>Backlog</div>
-            <ul>
-              {backlog.map((item, index) => {
-                return <li>{item}</li>;
-              })}
-            </ul>
-          </div>
-          <div>
-            <div>To Do</div>
-            <ul>
-              {toDo.map((item, index) => {
-                return <li>{item}</li>;
-              })}
-            </ul>
-          </div>
-          <div>
-            <div>On Going</div>
-            <ul>
-              {onGoing.map((item, index) => {
-                return <li>{item}</li>;
-              })}
-            </ul>{" "}
-          </div>
-          <div>
-            <div>Done</div>
-            <ul>
-              {done.map((item, index) => {
-                return <li>{item}</li>;
-              })}
-            </ul>
+        <div>
+          <h5>Add Task</h5>
+
+          <form>
+            <div className="form-group">
+              <label htmlFor="taskName">Task Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="taskName"
+                aria-describedby="taskNameHelp"
+                placeholder="Enter Task"
+              />
+              {/* <small id="emailHelp" className="form-text text-muted">
+                We'll never share your email with anyone else.
+              </small> */}
+            </div>
+            <div className="form-group">
+              <label htmlFor="priority">Priority</label>
+              <input
+                type="text"
+                className="form-control"
+                id="priority"
+                placeholder="Enter Priotrity"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="deadline">Deadline</label>
+              <input
+                type="text"
+                className="form-control"
+                id="deadline"
+                placeholder="Enter Deadline"
+              />
+            </div>
+            {/* <div className="form-check">
+    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+  </div> */}
+            <button type="submit" className="btn btn-primary">
+              ADD TASK
+            </button>
+          </form>
+
+          <div
+            style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}
+          >
+            <div>
+              <div>Backlog</div>
+              <ul>
+                {userTasks.map((item, index) => {
+                  if (item.stage === 0) {
+                    return <li key={index}>{item.taskName}</li>;
+                  } else {
+                    return null;
+                  }
+                })}
+              </ul>
+            </div>
+            <div>
+              <div>To Do</div>
+              <ul>
+                {userTasks.map((item, index) => {
+                  if (item.stage === 1) {
+                    return <li key={index}>{item.taskName}</li>;
+                  } else {
+                    return null;
+                  }
+                })}
+              </ul>
+            </div>
+            <div>
+              <div>On Going</div>
+              <ul>
+                {userTasks.map((item, index) => {
+                  if (item.stage === 2) {
+                    return <li key={index}>{item.taskName}</li>;
+                  } else {
+                    return null;
+                  }
+                })}
+              </ul>{" "}
+            </div>
+            <div>
+              <div>Done</div>
+              <ul>
+                {userTasks.map((item, index) => {
+                  if (item.stage === 3) {
+                    return <li key={index}>{item.taskName}</li>;
+                  } else {
+                    return null;
+                  }
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       )}

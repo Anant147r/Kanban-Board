@@ -9,144 +9,74 @@
       "id": 1
     },
     {
-      "name": "Anant Rawat2",
-      "userName": "Anant Rawat 2",
-      "email": "anant2.rawat2@gmail.com",
-      "number": "32465465135",
-      "password": "123456",
-      "id": 2
-    },
-    {
-      "name": "Anant Rawat3",
-      "userName": "Anant Rawat 3",
-      "email": "anant3.rawat3@gmail.com",
+      "name": "Anant Rawat",
+      "userName": "Mon2",
+      "email": "asdf@asd.asdf",
       "number": "2222222222",
       "password": "123456",
-      "id": 3
+      "id": 2
     }
   ],
   "userTasks": [
     {
       "userId": "1",
-      "tasks": {
-        "backlog": [
-          {
-            "taskId": "",
-            "taskName": "backlog1",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "backlog2",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "toDo": [
-          {
-            "taskId": "",
-            "taskName": "todo1",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "todo2",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "onGoing": [
-          {
-            "taskId": "",
-            "taskName": "onGOing1",
-            "priority": "onGOing2",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "done": [
-          {
-            "taskId": "",
-            "taskName": "",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "",
-            "priority": "",
-            "deadline": ""
-          }
-        ]
-      }
+      "tasks": [
+        {
+          "taskId": "",
+          "taskName": "backlog1",
+          "priority": "",
+          "deadline": "",
+          "stage": 0
+        },
+        {
+          "taskId": "",
+          "taskName": "toDo1",
+          "priority": "",
+          "deadline": "",
+          "stage": 1
+        },
+        {
+          "taskId": "",
+          "taskName": "done1",
+          "priority": "",
+          "deadline": "",
+          "stage": 3
+        },
+        {
+          "taskId": "",
+          "taskName": "done2",
+          "priority": "",
+          "deadline": "",
+          "stage": 3
+        },
+        {
+          "taskId": "",
+          "taskName": "onGoing1",
+          "priority": "",
+          "deadline": "",
+          "stage": 2
+        },
+        {
+          "taskId": "",
+          "taskName": "todo3",
+          "priority": "",
+          "deadline": "",
+          "stage": 1
+        },
+        {
+          "taskId": "",
+          "taskName": "task3",
+          "priority": "",
+          "deadline": "",
+          "stage": 3
+        }
+      ],
+      "id": "1"
     },
     {
-      "userId": "3",
-      "tasks": {
-        "backlog": [
-          {
-            "taskId": "",
-            "taskName": "2ndback",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "2nd back",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "toDo": [
-          {
-            "taskId": "",
-            "taskName": "2endtot",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "2ndtodo",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "onGoing": [
-          {
-            "taskId": "",
-            "taskName": "2ndsdf",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "2dnfasd",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "done": [
-          {
-            "taskId": "",
-            "taskName": "2bsaf",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "2asdf",
-            "priority": "",
-            "deadline": ""
-          }
-        ]
-      }
+      "userId": 2,
+      "tasks": [],
+      "id": "cxWz1RM"
     }
   ]
 }

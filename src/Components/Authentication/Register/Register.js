@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import axios from "axios";
 import { connect } from "react-redux";
 import { register } from "../../../Redux/Authentication/AuthenticationActions";
+import { useHistory } from "react-router-dom";
 const Register = ({ state, registerUser }) => {
+  const history = useHistory();
+  useEffect(() => {
+    if (state.isAuthenticated === true) {
+      history.push("/dashboard");
+    }
+  }, [state.isAuthenticated]);
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");

@@ -16,7 +16,7 @@ const Login = ({ state, loginUser }) => {
     try {
       const res = await loginUser({ email, password });
       clearStateValues();
-      console.log(res);
+      // console.log(res);
     } catch (err) {
       console.log(err);
     }

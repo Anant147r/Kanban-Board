@@ -1,6 +1,8 @@
 import axios from "axios";
 import { LOGIN_SUCCESS, REGISTER_SUCCESS } from "./AuthenticationTypes";
-import { FETCH_SUCESSFUL } from "../TaskManagement/TaskManagementTypes";
+// import { FETCH_SUCESSFUL } from "../TaskManagement/TaskManagementTypes";
+// import { useHistory } from "react-router-dom";
+
 export const login = (data) => async (dispatch) => {
   const { email, password } = data;
   try {
@@ -22,6 +24,7 @@ export const login = (data) => async (dispatch) => {
 };
 
 export const register = (data) => async (dispatch) => {
+  // const history = useHistory();
   const { name, userName, email, number, password } = data;
   try {
     const res = await axios.post("http://localhost:3000/employees", {
@@ -32,8 +35,20 @@ export const register = (data) => async (dispatch) => {
       password,
     });
     console.log("Done");
-    console.log(res);
+    // console.log(res);
+    const userId = res.data.id;
+    // console.log(userId);
     dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });
-    window.open("/dashboard", "_self");
+
+    try {
+      const resUser = await axios.post("http://localhost:3000/userTasks", {
+        userId: userId,
+        tasks: [],
+      });
+      // console.log(resUser);
+    } catch (err) {}
+
+    // window.open("/dashboard", "_self");
+    // history.push("/dashboard");
   } catch (err) {}
 };
