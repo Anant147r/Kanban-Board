@@ -7,106 +7,21 @@
       "number": "1111222255",
       "password": "123456",
       "id": 1
-    },
-    {
-      "name": "anant",
-      "userName": "Mon2",
-      "email": "anant2.rawat2@gmail.com",
-      "number": "2222222222",
-      "password": "123456",
-      "id": 2
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Anant Rawat",
-      "email": "anant3.rawat3@gmail.com",
-      "number": "123456789",
-      "password": "123456",
-      "id": 3
     }
   ],
   "userTasks": [
     {
       "userId": "1",
-      "tasks": {
-        "backlog": [
-          {
-            "taskId": "",
-            "taskName": "backlog1",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "backlog2",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "toDo": [
-          {
-            "taskId": "",
-            "taskName": "todo1",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "todo2",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "onGoing": [
-          {
-            "taskId": "",
-            "taskName": "onGOing1",
-            "priority": "onGOing2",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "",
-            "priority": "",
-            "deadline": ""
-          }
-        ],
-        "done": [
-          {
-            "taskId": "",
-            "taskName": "",
-            "priority": "",
-            "deadline": ""
-          },
-          {
-            "taskId": "",
-            "taskName": "",
-            "priority": "",
-            "deadline": ""
-          }
-        ]
-      },
+      "tasks": [
+        {
+          "id": 1,
+          "taskName": "backlog1",
+          "priority": "",
+          "deadline": "",
+          "stage": 0
+        }
+      ],
       "id": "1"
-    },
-    {
-      "userId": 2,
-      "tasks": {
-        "backlog": ["asdfa", "asdfasdf"],
-        "toDo": ["zxvzxc"],
-        "onGoing": ["qwerq"],
-        "done": ["asdfa", "adsfas"]
-      },
-      "id": "8tqVTuR"
-    },
-    {
-      "userId": 3,
-      "tasks": {
-        "backlog": [],
-        "toDo": [],
-        "onGoing": [],
-        "done": []
-      },
-      "id": "jm8tEA5"
     }
   ]
 }

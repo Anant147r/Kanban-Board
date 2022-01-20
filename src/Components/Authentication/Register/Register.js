@@ -5,11 +5,11 @@ import { register } from "../../../Redux/Authentication/AuthenticationActions";
 import { useHistory } from "react-router-dom";
 const Register = ({ state, registerUser }) => {
   const history = useHistory();
-  useEffect(() => {
-    if (state.isAuthenticated === true) {
-      history.push("/dashboard");
-    }
-  }, [state.isAuthenticated]);
+  // useEffect(() => {
+  //   if (state.isAuthenticated === true) {
+  //     history.push("/dashboard");
+  //   }
+  // }, [state.isAuthenticated]);
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");

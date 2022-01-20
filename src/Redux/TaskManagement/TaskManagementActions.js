@@ -32,3 +32,15 @@ export const fetchUserTask = (activeUser) => async (dispatch) => {
 
   // console.log("asdfasdfasdfasd");
 };
+
+export const addUserTask = (data) => async (dispatch) => {
+  try {
+    const res = axios.post(
+      "http://localhost:3000/userTasks",
+      //  { userId:data.userId,taskName:data.taskName,priority:data.priority,deadline:data.deadline,stage:data.stage }
+      { ...data }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};

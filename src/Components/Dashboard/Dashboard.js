@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { fetchUserTask } from "../../Redux/TaskManagement/TaskManagementActions";
+import {
+  fetchUserTask,
+  addUserTask,
+} from "../../Redux/TaskManagement/TaskManagementActions";
 import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
-const Dashboard = ({
-  tasks,
-  activeUser,
-  fetchUserTasks,
-  // loading,
-  dispatch,
-}) => {
-  const [backlog, setBacklog] = useState([]);
-  const [toDo, setToDo] = useState([]);
-  const [onGoing, setOnGoing] = useState([]);
-  const [done, setDone] = useState([]);
+const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
+  // const [backlog, setBacklog] = useState([]);
+  // const [toDo, setToDo] = useState([]);
+  // const [onGoing, setOnGoing] = useState([]);
+  // const [done, setDone] = useState([]);
+  const [taskName, setTaskName] = useState("");
+  const [priority, setPriority] = useState("");
+  const [deadLine, setDeadline] = useState("");
+  const [stage, setStage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [userTasks, setUserTasks] = useState([]);
   // const backlog = [];
@@ -22,24 +23,26 @@ const Dashboard = ({
   // const done = [];
   const fetchTasks = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/userTasks");
-      res.data.forEach((item, index) => {
-        if (item.userId == activeUser) {
-          setUserTasks(item.tasks);
-          // console.log(item.tasks);
-          // item.tasks.forEach((task, index) => {
-          //   if (task.stage === 0) {
-          //     setBacklog([...backlog, task.taskName]);
-          //   } else if (task.stage === 1) {
-          //     setToDo([...toDo, task.taskName]);
-          //   } else if (task.stage === 2) {
-          //     setOnGoing([...onGoing, task.taskName]);
-          //   } else if (task.stage === 3) {
-          //     setDone([...done, task.taskName]);
-          //   }
-          // });
-        }
-      });
+      const res = await axios.get(
+        `http://localhost:3000/userTasks?userId=${activeUser}`
+      );
+      // res.data.forEach((item, index) => {
+      // if (item.userId == activeUser) {
+      setUserTasks(res.data);
+      // console.log(item.tasks);
+      // item.tasks.forEach((task, index) => {
+      //   if (task.stage === 0) {
+      //     setBacklog([...backlog, task.taskName]);
+      //   } else if (task.stage === 1) {
+      //     setToDo([...toDo, task.taskName]);
+      //   } else if (task.stage === 2) {
+      //     setOnGoing([...onGoing, task.taskName]);
+      //   } else if (task.stage === 3) {
+      //     setDone([...done, task.taskName]);
+      //   }
+      // });
+      // }
+      // });
       setLoading(false);
     } catch (err) {}
   };
@@ -48,8 +51,11 @@ const Dashboard = ({
   useEffect(() => {
     // console.log(tasks);
     fetchTasks();
-  }, []);
-
+  }, [setUserTasks]);
+  const submitHandler = (event) => {
+    event.preventDefault();
+    addUserTask({ userId: activeUser, taskName, priority, deadLine, stage });
+  };
   return (
     <div>
       {loading ? (
@@ -58,7 +64,7 @@ const Dashboard = ({
         <div>
           <h5>Add Task</h5>
 
-          <form>
+          <form onSubmit={submitHandler}>
             <div className="form-group">
               <label htmlFor="taskName">Task Name</label>
               <input
@@ -67,6 +73,10 @@ const Dashboard = ({
                 id="taskName"
                 aria-describedby="taskNameHelp"
                 placeholder="Enter Task"
+                value={taskName}
+                onChange={(event) => {
+                  setTaskName(event.target.value);
+                }}
               />
               {/* <small id="emailHelp" className="form-text text-muted">
                 We'll never share your email with anyone else.
@@ -79,6 +89,10 @@ const Dashboard = ({
                 className="form-control"
                 id="priority"
                 placeholder="Enter Priotrity"
+                value={priority}
+                onChange={(event) => {
+                  setPriority(event.target.value);
+                }}
               />
             </div>
             <div className="form-group">
@@ -88,6 +102,23 @@ const Dashboard = ({
                 className="form-control"
                 id="deadline"
                 placeholder="Enter Deadline"
+                value={deadLine}
+                onChange={(event) => {
+                  setDeadline(event.target.value);
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="stage">Stage</label>
+              <input
+                type="number"
+                className="form-control"
+                id="stage"
+                placeholder="Enter Stage"
+                value={stage}
+                onChange={(event) => {
+                  setStage(event.target.value);
+                }}
               />
             </div>
             {/* <div className="form-check">
@@ -105,49 +136,53 @@ const Dashboard = ({
             <div>
               <div>Backlog</div>
               <ul>
-                {userTasks.map((item, index) => {
-                  if (item.stage === 0) {
-                    return <li key={index}>{item.taskName}</li>;
-                  } else {
-                    return null;
-                  }
-                })}
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 0) {
+                      return <li key={index}>{item.taskName}</li>;
+                    } else {
+                      return null;
+                    }
+                  })}
               </ul>
             </div>
             <div>
               <div>To Do</div>
               <ul>
-                {userTasks.map((item, index) => {
-                  if (item.stage === 1) {
-                    return <li key={index}>{item.taskName}</li>;
-                  } else {
-                    return null;
-                  }
-                })}
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 1) {
+                      return <li key={index}>{item.taskName}</li>;
+                    } else {
+                      return null;
+                    }
+                  })}
               </ul>
             </div>
             <div>
               <div>On Going</div>
               <ul>
-                {userTasks.map((item, index) => {
-                  if (item.stage === 2) {
-                    return <li key={index}>{item.taskName}</li>;
-                  } else {
-                    return null;
-                  }
-                })}
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 2) {
+                      return <li key={index}>{item.taskName}</li>;
+                    } else {
+                      return null;
+                    }
+                  })}
               </ul>{" "}
             </div>
             <div>
               <div>Done</div>
               <ul>
-                {userTasks.map((item, index) => {
-                  if (item.stage === 3) {
-                    return <li key={index}>{item.taskName}</li>;
-                  } else {
-                    return null;
-                  }
-                })}
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 3) {
+                      return <li key={index}>{item.taskName}</li>;
+                    } else {
+                      return null;
+                    }
+                  })}
               </ul>
             </div>
           </div>
@@ -170,8 +205,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchUserTasks: () => {
       dispatch(fetchUserTask);
     },
-    dispatch: () => {
-      dispatch();
+    addUserTask: (data) => {
+      dispatch(addUserTask(data));
     },
   };
 };
