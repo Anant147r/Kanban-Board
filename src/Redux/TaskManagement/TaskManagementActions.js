@@ -44,3 +44,15 @@ export const addUserTask = (data) => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const updateUserTaskStage = (taskId, newStage) => async (dispatch) => {
+  try {
+    await axios.patch(`http://localhost:3000/userTasks/${taskId}`, {
+      stage: newStage,
+    });
+    // const res=await axios.get("htt")
+    console.log("done");
+  } catch (err) {
+    console.log(err);
+  }
+};

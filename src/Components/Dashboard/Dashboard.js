@@ -4,9 +4,16 @@ import axios from "axios";
 import {
   fetchUserTask,
   addUserTask,
+  updateUserTaskStage,
 } from "../../Redux/TaskManagement/TaskManagementActions";
 import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
-const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
+const Dashboard = ({
+  tasks,
+  activeUser,
+  fetchUserTasks,
+  addUserTask,
+  updateUserTaskStage,
+}) => {
   // const [backlog, setBacklog] = useState([]);
   // const [toDo, setToDo] = useState([]);
   // const [onGoing, setOnGoing] = useState([]);
@@ -55,6 +62,9 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
   const submitHandler = (event) => {
     event.preventDefault();
     addUserTask({ userId: activeUser, taskName, priority, deadLine, stage });
+  };
+  const updateStage = (taskId, newStage) => {
+    updateUserTaskStage(taskId, newStage);
   };
   return (
     <div>
@@ -143,10 +153,17 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                         <li key={index}>
                           <div>Task Name</div>
                           <div>{item.taskName} </div>
-                          <button className="btn btn-success">
+                          <button className="btn btn-success disabled">
                             Previous
                           </button>{" "}
-                          <button className="btn btn-success">Next</button>
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage + 1);
+                            }}
+                          >
+                            Next
+                          </button>
                         </li>
                       );
                     } else {
@@ -165,10 +182,22 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                         <li key={index}>
                           <div>Task Name</div>
                           <div>{item.taskName} </div>
-                          <button className="btn btn-success">
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage - 1);
+                            }}
+                          >
                             Previous
                           </button>{" "}
-                          <button className="btn btn-success">Next</button>
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage + 1);
+                            }}
+                          >
+                            Next
+                          </button>
                         </li>
                       );
                     } else {
@@ -187,10 +216,22 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                         <li key={index}>
                           <div>Task Name</div>
                           <div>{item.taskName} </div>
-                          <button className="btn btn-success">
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage - 1);
+                            }}
+                          >
                             Previous
                           </button>{" "}
-                          <button className="btn btn-success">Next</button>
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage + 1);
+                            }}
+                          >
+                            Next
+                          </button>
                         </li>
                       );
                     } else {
@@ -209,10 +250,17 @@ const Dashboard = ({ tasks, activeUser, fetchUserTasks, addUserTask }) => {
                         <li key={index}>
                           <div>Task Name</div>
                           <div>{item.taskName} </div>
-                          <button className="btn btn-success">
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage - 1);
+                            }}
+                          >
                             Previous
                           </button>{" "}
-                          <button className="btn btn-success">Next</button>
+                          <button className="btn btn-success disabled">
+                            Next
+                          </button>
                         </li>
                       );
                     } else {
@@ -243,6 +291,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     addUserTask: (data) => {
       dispatch(addUserTask(data));
+    },
+    updateUserTaskStage: (taskId, newStage) => {
+      dispatch(updateUserTaskStage(taskId, newStage));
     },
   };
 };

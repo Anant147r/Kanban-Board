@@ -52,18 +52,18 @@
     },
     {
       "userId": "1",
-      "taskName": "backlog4",
+      "taskName": "1st task",
       "priority": "",
       "deadline": "",
-      "stage": 0,
+      "stage": 1,
       "id": 2
     },
     {
       "userId": "1",
-      "taskName": "backlog5",
+      "taskName": "Test task",
       "priority": "",
       "deadline": "",
-      "stage": 0,
+      "stage": 3,
       "id": 3
     },
     {
@@ -145,6 +145,14 @@
       "deadLine": "sdf",
       "stage": "3",
       "id": 14
+    },
+    {
+      "userId": 1,
+      "taskName": "Test task 2",
+      "priority": "5",
+      "deadLine": "dsafadsf",
+      "stage": "2",
+      "id": 15
     }
   ]
 }
