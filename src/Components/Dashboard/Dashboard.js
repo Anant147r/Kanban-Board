@@ -89,12 +89,12 @@ const Dashboard = ({
             >
               <div>
                 <h3 className={`${styles.heading}`}>Backlog</h3>
-                <ul>
+                <div>
                   {userTasks &&
                     userTasks.map((item, index) => {
                       if (item.stage == 0) {
                         return (
-                          <li key={index}>
+                          <div key={index}>
                             <Task
                               taskName={item.taskName}
                               priority={item.priority}
@@ -127,22 +127,22 @@ const Dashboard = ({
                   >
                     Delete
                   </button> */}
-                          </li>
+                          </div>
                         );
                       } else {
                         return null;
                       }
                     })}
-                </ul>
+                </div>
               </div>
               <div>
                 <h3 className={`${styles.heading}`}>To Do</h3>
-                <ul>
+                <div>
                   {userTasks &&
                     userTasks.map((item, index) => {
                       if (item.stage == 1) {
                         return (
-                          <li key={index}>
+                          <div key={index}>
                             <Task
                               taskName={item.taskName}
                               priority={item.priority}
@@ -180,22 +180,22 @@ const Dashboard = ({
                   >
                     Delete
                   </button> */}
-                          </li>
+                          </div>
                         );
                       } else {
                         return null;
                       }
                     })}
-                </ul>
+                </div>
               </div>
               <div>
                 <h3 className={`${styles.heading}`}>On Going</h3>
-                <ul>
+                <div>
                   {userTasks &&
                     userTasks.map((item, index) => {
                       if (item.stage == 2) {
                         return (
-                          <li key={index}>
+                          <div key={index}>
                             <Task
                               taskName={item.taskName}
                               priority={item.priority}
@@ -233,22 +233,22 @@ const Dashboard = ({
                   >
                     Delete
                   </button> */}
-                          </li>
+                          </div>
                         );
                       } else {
                         return null;
                       }
                     })}
-                </ul>{" "}
+                </div>{" "}
               </div>
               <div>
                 <h3 className={`${styles.heading}`}>Done</h3>
-                <ul>
+                <div>
                   {userTasks &&
                     userTasks.map((item, index) => {
                       if (item.stage == 3) {
                         return (
-                          <li key={index}>
+                          <div key={index}>
                             <Task
                               taskName={item.taskName}
                               priority={item.priority}
@@ -281,13 +281,13 @@ const Dashboard = ({
                   >
                     Delete
                   </button> */}
-                          </li>
+                          </div>
                         );
                       } else {
                         return null;
                       }
                     })}
-                </ul>
+                </div>
               </div>
             </div>
           )}

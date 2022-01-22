@@ -8,7 +8,7 @@
   height: 80vh;
   /* border: 1px solid black; */
   overflow: scroll;
-  /* grid-gap: rem; */
+  grid-gap: 1rem;
 }
 
 .dashboard .tasks .heading {

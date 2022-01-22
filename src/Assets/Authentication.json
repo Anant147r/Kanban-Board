@@ -9,14 +9,6 @@
       "id": 1
     },
     {
-      "name": "Anant Rawat2",
-      "userName": "Mon2",
-      "email": "anant2.rawat2@gmail.com",
-      "number": "2222222222",
-      "password": "123",
-      "id": 2
-    },
-    {
       "name": "gaurav",
       "userName": "rawatgaurav2",
       "email": "rawatgaurav2@gmail.com",
@@ -25,54 +17,13 @@
       "id": 3
     },
     {
-      "name": "New User",
-      "userName": "User",
+      "name": "Anant Rawat",
+      "userName": "Mon2",
       "email": "anant5.rawat5@gmail.com",
       "number": "8888888888",
       "password": "123456",
       "id": 4
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Mon2",
-      "email": "asdf@asd.asdf",
-      "number": "9999999999",
-      "password": "123456",
-      "id": 5
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Mon2",
-      "email": "asdf@asd.asdf",
-      "number": "8888888888",
-      "password": "123456",
-      "id": 6
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Mon2",
-      "email": "asdf@asd.asdf",
-      "number": "8888888888",
-      "password": "123456",
-      "id": 7
     }
   ],
-  "userTasks": [
-    {
-      "userId": 1,
-      "taskName": "Dummy Task",
-      "priority": "2",
-      "deadLine": "2020-01-02",
-      "stage": 0,
-      "id": 13
-    },
-    {
-      "userId": 1,
-      "taskName": "asdf",
-      "priority": "5",
-      "deadLine": "2021-01-01",
-      "stage": "1",
-      "id": 14
-    }
-  ]
+  "userTasks": []
 }

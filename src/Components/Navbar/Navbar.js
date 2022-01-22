@@ -8,9 +8,9 @@ const Navbar = ({ isAnyUserLoggedIn, logout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <span className="navbar-brand" href="/#">
-        <NavLink to="/" style={{ color: "black" }}>
-          Kanban Board
-        </NavLink>
+        {/* <NavLink to="/" style={{ color: "black" }}> */}
+        Kanban Board
+        {/* </NavLink> */}
       </span>
       <button
         className="navbar-toggler"

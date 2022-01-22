@@ -26,19 +26,28 @@ export const register = (data) => async (dispatch) => {
   // const history = useHistory();
   const { name, userName, email, number, password } = data;
   try {
-    const res = await axios.post("http://localhost:3000/employees", {
-      name,
-      userName,
-      email,
-      number,
-      password,
-    });
-    console.log("Done");
-    // console.log(res);
-    alert("User has been successfully registered");
-    const userId = res.data.id;
-    // console.log(userId);
-    dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });
+    const res1 = await axios.get(
+      `http://localhost:3000/employees?email=${email}`
+    );
+    console.log(res1);
+    if (res1.data.length !== 0) {
+      // console.log("User already exists");
+      alert(`User with email ${email} already exists`);
+    } else {
+      const res = await axios.post("http://localhost:3000/employees", {
+        name,
+        userName,
+        email,
+        number,
+        password,
+      });
+      console.log("Done");
+      // console.log(res);
+      alert("User has been successfully registered");
+      const userId = res.data.id;
+      // console.log(userId);
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });
+    }
 
     // try {
     //   const resUser = await axios.post("http://localhost:3000/userTasks", {
