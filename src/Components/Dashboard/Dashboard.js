@@ -77,6 +77,19 @@ const Dashboard = ({
           <h3 style={{ textAlign: "center", marginBottom: "2rem" }}>
             Welcome {userName ? userName : ""}
           </h3>
+          <button
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#taskForm"
+            style={{
+              // border: "1px solid black",
+              display: "block",
+              margin: "0 auto",
+              marginBottom: "2rem",
+            }}
+          >
+            Add A New Task
+          </button>
           {userTasks.length == 0 ? (
             <h4 style={{ textAlign: "center" }}>
               Your task list is empty. Click on ADD A NEW TASK button to add a
@@ -293,22 +306,6 @@ const Dashboard = ({
           )}
 
           {/* <div></div> */}
-          <button
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target="#taskForm"
-            style={{
-              // border: "1px solid black",
-              display: "block",
-              margin: "0 auto",
-              marginTop: "3rem",
-              position: "fixed",
-              top: "80%",
-              right: "5%",
-            }}
-          >
-            Add A New Task
-          </button>
 
           {/* ADD A NEW TASK */}
 

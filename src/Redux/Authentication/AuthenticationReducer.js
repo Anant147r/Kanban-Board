@@ -2,7 +2,7 @@
 import {
   REGISTER,
   LOGIN_SUCCESS,
-  REGISTER_SUCCESS,
+  // REGISTER_SUCCESS,
   LOGOUT,
 } from "./AuthenticationTypes";
 const intialState = {

@@ -44,7 +44,7 @@ export const register = (data) => async (dispatch) => {
       console.log("Done");
       // console.log(res);
       alert("User has been successfully registered");
-      const userId = res.data.id;
+      // const userId = res.data.id;
       // console.log(userId);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });
     }

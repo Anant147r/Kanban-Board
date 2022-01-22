@@ -3,11 +3,12 @@ import { FETCH_USER_TASK, FETCH_SUCESSFUL } from "./TaskManagementTypes";
 export const fetchUserTask = (activeUser) => async (dispatch) => {
   // console.log("asdfasdf");
   try {
-    dispatch({ type: FETCH_USER_TASK });
+    // dispatch({ type: FETCH_USER_TASK });
     const res = await axios.get(
       `http://localhost:3000/userTasks?userId=${activeUser}`
     );
-    dispatch({ type: FETCH_SUCESSFUL, payload: res.data });
+    return res.data;
+    // dispatch({ type: FETCH_SUCESSFUL, payload: res.data });
     // console.log(res);
     // return res.data;
   } catch (err) {
