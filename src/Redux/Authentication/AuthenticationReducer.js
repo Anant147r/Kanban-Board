@@ -13,7 +13,7 @@ const intialState = {
 const AuthenticationReducer = (state = intialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case REGISTER_SUCCESS:
+    // case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       return {
         ...state,

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { useHistory, Redirect } from "react-router-dom";
 import {
   fetchUserTask,
   addUserTask,
@@ -14,57 +15,46 @@ const Dashboard = ({
   addUserTask,
   updateUserTaskStage,
 }) => {
-  // const [backlog, setBacklog] = useState([]);
-  // const [toDo, setToDo] = useState([]);
-  // const [onGoing, setOnGoing] = useState([]);
-  // const [done, setDone] = useState([]);
+  const history = useHistory();
   const [taskName, setTaskName] = useState("");
   const [priority, setPriority] = useState("");
   const [deadLine, setDeadline] = useState("");
   const [stage, setStage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [userTasks, setUserTasks] = useState([]);
-  // const backlog = [];
-  // const toDo = [];
-  // const onGoing = [];
-  // const done = [];
+  const [val, setVal] = useState(1);
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
         `http://localhost:3000/userTasks?userId=${activeUser}`
       );
-      // res.data.forEach((item, index) => {
-      // if (item.userId == activeUser) {
       setUserTasks(res.data);
-      // console.log(item.tasks);
-      // item.tasks.forEach((task, index) => {
-      //   if (task.stage === 0) {
-      //     setBacklog([...backlog, task.taskName]);
-      //   } else if (task.stage === 1) {
-      //     setToDo([...toDo, task.taskName]);
-      //   } else if (task.stage === 2) {
-      //     setOnGoing([...onGoing, task.taskName]);
-      //   } else if (task.stage === 3) {
-      //     setDone([...done, task.taskName]);
-      //   }
-      // });
-      // }
-      // });
       setLoading(false);
+      return userTasks;
     } catch (err) {}
   };
-  // fetchTasks();
-  // fetchTasks();
   useEffect(() => {
-    // console.log(tasks);
     fetchTasks();
-  }, [setUserTasks]);
+  }, [val, fetchUserTask]);
   const submitHandler = (event) => {
     event.preventDefault();
     addUserTask({ userId: activeUser, taskName, priority, deadLine, stage });
+    setTaskName("");
+    setPriority("");
+    setDeadline("");
+    setStage(0);
+    fetchUserTask();
+    setVal(val + 1);
+    // history.push("/dashboard");
+    // window.open("/dashboard");
   };
   const updateStage = (taskId, newStage) => {
     updateUserTaskStage(taskId, newStage);
+    fetchUserTask();
+    setVal(val + 1);
+    // console.log("Hello");
+    // history.push("/dashboard");
+    // <Redirect to="/dashboard" />;
   };
   return (
     <div>
@@ -286,7 +276,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUserTasks: () => {
+    fetchUserTasks: (activeUser) => {
       dispatch(fetchUserTask);
     },
     addUserTask: (data) => {

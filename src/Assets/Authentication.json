@@ -9,36 +9,12 @@
       "id": 1
     },
     {
-      "name": "Anant Rawat",
+      "name": "Anant Rawat2",
       "userName": "Mon2",
-      "email": "anant4.rawat4@gmail.com",
+      "email": "anant2.rawat2@gmail.com",
       "number": "2222222222",
-      "password": "123456",
+      "password": "123",
       "id": 2
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Mon2",
-      "email": "asdf@asd.asdf",
-      "number": "2222222222",
-      "password": "123456",
-      "id": 3
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Anant Rawat 2",
-      "email": "anant6anant6@gmail.com",
-      "number": "1111222255",
-      "password": "123456",
-      "id": 4
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Mon2",
-      "email": "anant6.rawat6@gmail.com",
-      "number": "32465465135",
-      "password": "123456",
-      "id": 5
     }
   ],
   "userTasks": [
@@ -47,112 +23,88 @@
       "taskName": "backlog4",
       "priority": "",
       "deadline": "",
-      "stage": 0,
+      "stage": 3,
       "id": 1
     },
     {
-      "userId": "1",
-      "taskName": "1st task",
-      "priority": "",
-      "deadline": "",
-      "stage": 1,
+      "userId": 2,
+      "taskName": "New Task",
+      "priority": "1564",
+      "deadLine": "asldkfjalkdsf",
+      "stage": 0,
       "id": 2
     },
     {
-      "userId": "1",
-      "taskName": "Test task",
+      "userId": 2,
+      "taskName": "",
       "priority": "",
-      "deadline": "",
-      "stage": 3,
+      "deadLine": "",
+      "stage": 0,
       "id": 3
     },
     {
-      "userId": "2",
-      "taskName": "backlog5",
+      "userId": 2,
+      "taskName": "",
       "priority": "",
-      "deadline": "",
+      "deadLine": "",
       "stage": 0,
       "id": 4
     },
     {
-      "userId": "2",
-      "taskName": "backlog5",
-      "priority": "",
-      "deadline": "",
-      "stage": 0,
+      "userId": 2,
+      "taskName": "sd",
+      "priority": "545",
+      "deadLine": "dsafadsf",
+      "stage": 1,
       "id": 5
     },
     {
-      "userId": "2",
-      "taskName": "backlog5",
+      "userId": 2,
+      "taskName": "",
       "priority": "",
-      "deadline": "",
-      "stage": 0,
-      "id": 5
-    },
-    {
-      "userId": "3",
-      "taskName": "backlog5",
-      "priority": "",
-      "deadline": "",
-      "stage": 0,
+      "deadLine": "",
+      "stage": "2",
       "id": 6
     },
     {
-      "userId": "3",
-      "taskName": "backlog5",
-      "priority": "",
-      "deadline": "",
-      "stage": 0,
+      "userId": 2,
+      "taskName": "Test task 2",
+      "priority": "1564",
+      "deadLine": "dsafadsf",
+      "stage": "1",
       "id": 7
     },
     {
-      "userId": 1,
-      "taskName": "Dummy Task",
+      "userId": 2,
+      "taskName": "new task",
       "priority": "155",
-      "deadLine": "sdf",
-      "stage": "1",
+      "deadLine": "22",
+      "stage": 1,
+      "id": 8
+    },
+    {
+      "userId": 2,
+      "taskName": "",
+      "priority": "",
+      "deadLine": "",
+      "stage": 1,
+      "id": 9
+    },
+    {
+      "userId": 2,
+      "taskName": "",
+      "priority": "",
+      "deadLine": "",
+      "stage": 0,
       "id": 10
     },
     {
-      "userId": 1,
-      "taskName": "Dummy Task",
-      "priority": "155",
-      "deadLine": "sdf",
-      "stage": "1",
+      "userId": 2,
+      "taskName": "",
+      "priority": "",
+      "deadLine": "",
+      "stage": 0,
       "id": 11
-    },
-    {
-      "userId": 1,
-      "taskName": "Dummy Task",
-      "priority": "155",
-      "deadLine": "sdf",
-      "stage": "1",
-      "id": 12
-    },
-    {
-      "userId": 1,
-      "taskName": "asdf",
-      "priority": "545",
-      "deadLine": "22",
-      "stage": "2",
-      "id": 13
-    },
-    {
-      "userId": 5,
-      "taskName": "Dummy Task",
-      "priority": "155",
-      "deadLine": "sdf",
-      "stage": "3",
-      "id": 14
-    },
-    {
-      "userId": 1,
-      "taskName": "Test task 2",
-      "priority": "5",
-      "deadLine": "dsafadsf",
-      "stage": "2",
-      "id": 15
     }
   ]
 }
