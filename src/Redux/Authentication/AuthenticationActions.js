@@ -11,7 +11,7 @@ export const login = (data) => async (dispatch) => {
     for (let item of data) {
       if (item.email === email && item.password === password) {
         console.log("User exists");
-        dispatch({ type: LOGIN_SUCCESS, payload: item.id });
+        dispatch({ type: LOGIN_SUCCESS, payload: item });
         // const taskResponse = await axios.get("http://localhost:3000/userTasks");
         // dispatch({ type: FETCH_SUCESSFUL, payload: taskResponse.data });
       } else count++;
@@ -35,6 +35,7 @@ export const register = (data) => async (dispatch) => {
     });
     console.log("Done");
     // console.log(res);
+    alert("User has been successfully registered");
     const userId = res.data.id;
     // console.log(userId);
     dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });

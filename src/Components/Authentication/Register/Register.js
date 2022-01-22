@@ -38,7 +38,16 @@ const Register = ({ state, registerUser }) => {
     // });
   };
   return (
-    <div>
+    <div
+      className="container"
+      style={{
+        marginTop: "2rem",
+        border: "1px solid #d3d8dd",
+        borderRadius: "10px",
+        padding: "15px",
+        maxWidth: "20rem",
+      }}
+    >
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="name">Name*</label>
@@ -96,11 +105,12 @@ const Register = ({ state, registerUser }) => {
         <div className="form-group">
           <label htmlFor="contactNumber">Contact Number</label>
           <input
-            type="phone"
+            type="tel"
             className="form-control"
             id="contactNumber"
             placeholder="Contact Number"
             value={number}
+            pattern="[6789][0-9]{9}"
             onChange={(event) => {
               setNumber(event.target.value);
             }}

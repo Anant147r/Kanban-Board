@@ -5,6 +5,9 @@
 .dashboard .tasks {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  height: 80vh;
+  /* border: 1px solid black; */
+  overflow: scroll;
   /* grid-gap: rem; */
 }
 

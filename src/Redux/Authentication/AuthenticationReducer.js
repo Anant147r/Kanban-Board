@@ -19,7 +19,7 @@ const AuthenticationReducer = (state = intialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        activeUser: payload,
+        activeUser: payload.id,
         loading: false,
         data: payload,
       };

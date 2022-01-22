@@ -12,6 +12,7 @@ import {
 // import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
 import styles from "./Dashboard.module.css";
 const Dashboard = ({
+  userName,
   activeUser,
   addUserTask,
   updateUserTaskStage,
@@ -35,6 +36,7 @@ const Dashboard = ({
     } catch (err) {}
   };
   useEffect(() => {
+    // console.log(userInfo);
     fetchTasks();
   }, [val, fetchUserTask]);
   const submitHandler = (event) => {
@@ -46,6 +48,7 @@ const Dashboard = ({
     setStage(0);
     fetchUserTask();
     setVal(val + 1);
+    alert("Your task has been added");
     // history.push("/dashboard");
     // window.open("/dashboard");
   };
@@ -71,214 +74,225 @@ const Dashboard = ({
           className={`${styles.dashboard} container`}
           // style={{ border: "1px solid black" }}
         >
-          <div
-            className={`${styles.tasks}`}
-            // style={{ border: "1px solid black" }}
-          >
-            <div>
-              <h3 className={`${styles.heading}`}>Backlog</h3>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 0) {
-                      return (
-                        <li key={index}>
-                          <Task
-                            taskName={item.taskName}
-                            priority={item.priority}
-                            deadline={item.deadLine}
-                            stage={item.stage}
-                            taskId={item.id}
-                            incrementValue={() => {
-                              incrementValue();
-                            }}
-                          />
-                          {/* <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button className="btn btn-success disabled">
-                            Previous
-                          </button>{" "}
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage + 1);
-                            }}
-                          >
-                            Next
-                          </button>
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button> */}
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>
+          <h3 style={{ textAlign: "center", marginBottom: "2rem" }}>
+            Welcome {userName ? userName : ""}
+          </h3>
+          {userTasks.length == 0 ? (
+            <h4 style={{ textAlign: "center" }}>
+              Your task list is empty. Click on ADD A NEW TASK button to add a
+              task
+            </h4>
+          ) : (
+            <div
+              className={`${styles.tasks}`}
+              // style={{ border: "1px solid black" }}
+            >
+              <div>
+                <h3 className={`${styles.heading}`}>Backlog</h3>
+                <ul>
+                  {userTasks &&
+                    userTasks.map((item, index) => {
+                      if (item.stage == 0) {
+                        return (
+                          <li key={index}>
+                            <Task
+                              taskName={item.taskName}
+                              priority={item.priority}
+                              deadline={item.deadLine}
+                              stage={item.stage}
+                              taskId={item.id}
+                              incrementValue={() => {
+                                incrementValue();
+                              }}
+                            />
+                            {/* <div>Task Name</div>
+                  <div>{item.taskName} </div>
+                  <button className="btn btn-success disabled">
+                    Previous
+                  </button>{" "}
+                  <button
+                    className="btn btn-success"
+                    onClick={() => {
+                      updateStage(item.id, item.stage + 1);
+                    }}
+                  >
+                    Next
+                  </button>
+                  <br />
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      deleteTask(item.id);
+                    }}
+                  >
+                    Delete
+                  </button> */}
+                          </li>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })}
+                </ul>
+              </div>
+              <div>
+                <h3 className={`${styles.heading}`}>To Do</h3>
+                <ul>
+                  {userTasks &&
+                    userTasks.map((item, index) => {
+                      if (item.stage == 1) {
+                        return (
+                          <li key={index}>
+                            <Task
+                              taskName={item.taskName}
+                              priority={item.priority}
+                              deadline={item.deadLine}
+                              stage={item.stage}
+                              taskId={item.id}
+                              incrementValue={() => {
+                                incrementValue();
+                              }}
+                            />
+                            {/* <div>Task Name</div>
+                  <div>{item.taskName} </div>
+                  <button
+                    className="btn btn-success"
+                    onClick={() => {
+                      updateStage(item.id, item.stage - 1);
+                    }}
+                  >
+                    Previous
+                  </button>{" "}
+                  <button
+                    className="btn btn-success"
+                    onClick={() => {
+                      updateStage(item.id, item.stage + 1);
+                    }}
+                  >
+                    Next
+                  </button>{" "}
+                  <br />
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      deleteTask(item.id);
+                    }}
+                  >
+                    Delete
+                  </button> */}
+                          </li>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })}
+                </ul>
+              </div>
+              <div>
+                <h3 className={`${styles.heading}`}>On Going</h3>
+                <ul>
+                  {userTasks &&
+                    userTasks.map((item, index) => {
+                      if (item.stage == 2) {
+                        return (
+                          <li key={index}>
+                            <Task
+                              taskName={item.taskName}
+                              priority={item.priority}
+                              deadline={item.deadLine}
+                              stage={item.stage}
+                              taskId={item.id}
+                              incrementValue={() => {
+                                incrementValue();
+                              }}
+                            />
+                            {/* <div>Task Name</div>
+                  <div>{item.taskName} </div>
+                  <button
+                    className="btn btn-success"
+                    onClick={() => {
+                      updateStage(item.id, item.stage - 1);
+                    }}
+                  >
+                    Previous
+                  </button>{" "}
+                  <button
+                    className="btn btn-success"
+                    onClick={() => {
+                      updateStage(item.id, item.stage + 1);
+                    }}
+                  >
+                    Next
+                  </button>{" "}
+                  <br />
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      deleteTask(item.id);
+                    }}
+                  >
+                    Delete
+                  </button> */}
+                          </li>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })}
+                </ul>{" "}
+              </div>
+              <div>
+                <h3 className={`${styles.heading}`}>Done</h3>
+                <ul>
+                  {userTasks &&
+                    userTasks.map((item, index) => {
+                      if (item.stage == 3) {
+                        return (
+                          <li key={index}>
+                            <Task
+                              taskName={item.taskName}
+                              priority={item.priority}
+                              deadline={item.deadLine}
+                              stage={item.stage}
+                              taskId={item.id}
+                              incrementValue={() => {
+                                incrementValue();
+                              }}
+                            />
+                            {/* <div>Task Name</div>
+                  <div>{item.taskName} </div>
+                  <button
+                    className="btn btn-success"
+                    onClick={() => {
+                      updateStage(item.id, item.stage - 1);
+                    }}
+                  >
+                    Previous
+                  </button>{" "}
+                  <button className="btn btn-success disabled">
+                    Next
+                  </button>{" "}
+                  <br />
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      deleteTask(item.id);
+                    }}
+                  >
+                    Delete
+                  </button> */}
+                          </li>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })}
+                </ul>
+              </div>
             </div>
-            <div>
-              <h3 className={`${styles.heading}`}>To Do</h3>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 1) {
-                      return (
-                        <li key={index}>
-                          <Task
-                            taskName={item.taskName}
-                            priority={item.priority}
-                            deadline={item.deadLine}
-                            stage={item.stage}
-                            taskId={item.id}
-                            incrementValue={() => {
-                              incrementValue();
-                            }}
-                          />
-                          {/* <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage - 1);
-                            }}
-                          >
-                            Previous
-                          </button>{" "}
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage + 1);
-                            }}
-                          >
-                            Next
-                          </button>{" "}
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button> */}
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>
-            </div>
-            <div>
-              <h3 className={`${styles.heading}`}>On Going</h3>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 2) {
-                      return (
-                        <li key={index}>
-                          <Task
-                            taskName={item.taskName}
-                            priority={item.priority}
-                            deadline={item.deadLine}
-                            stage={item.stage}
-                            taskId={item.id}
-                            incrementValue={() => {
-                              incrementValue();
-                            }}
-                          />
-                          {/* <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage - 1);
-                            }}
-                          >
-                            Previous
-                          </button>{" "}
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage + 1);
-                            }}
-                          >
-                            Next
-                          </button>{" "}
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button> */}
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>{" "}
-            </div>
-            <div>
-              <h3 className={`${styles.heading}`}>Done</h3>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 3) {
-                      return (
-                        <li key={index}>
-                          <Task
-                            taskName={item.taskName}
-                            priority={item.priority}
-                            deadline={item.deadLine}
-                            stage={item.stage}
-                            taskId={item.id}
-                            incrementValue={() => {
-                              incrementValue();
-                            }}
-                          />
-                          {/* <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage - 1);
-                            }}
-                          >
-                            Previous
-                          </button>{" "}
-                          <button className="btn btn-success disabled">
-                            Next
-                          </button>{" "}
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button> */}
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>
-            </div>
-          </div>
+          )}
 
+          {/* <div></div> */}
           <button
             className="btn btn-primary"
             data-toggle="modal"
@@ -288,35 +302,40 @@ const Dashboard = ({
               display: "block",
               margin: "0 auto",
               marginTop: "3rem",
+              position: "fixed",
+              top: "80%",
+              right: "5%",
             }}
           >
             Add A New Task
           </button>
 
+          {/* ADD A NEW TASK */}
+
           <div
-            class="modal fade"
+            className="modal fade"
             id="taskForm"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="taskFormTitle"
             aria-hidden="true"
           >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLongTitle">
                     Welcome To The Task Form
                   </h5>
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                   <form onSubmit={submitHandler}>
                     <div className="form-group">
                       <label htmlFor="taskName">Task Name</label>
@@ -330,25 +349,29 @@ const Dashboard = ({
                         onChange={(event) => {
                           setTaskName(event.target.value);
                         }}
+                        required
                       />
                     </div>
                     <div className="form-group">
                       <label htmlFor="priority">Priority</label>
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         id="priority"
                         placeholder="Enter Priotrity"
                         value={priority}
+                        min={1}
+                        max={10}
                         onChange={(event) => {
                           setPriority(event.target.value);
                         }}
+                        required
                       />
                     </div>
                     <div className="form-group">
                       <label htmlFor="deadline">Deadline</label>
                       <input
-                        type="text"
+                        type="date"
                         className="form-control"
                         id="deadline"
                         placeholder="Enter Deadline"
@@ -356,6 +379,7 @@ const Dashboard = ({
                         onChange={(event) => {
                           setDeadline(event.target.value);
                         }}
+                        required
                       />
                     </div>
                     <div className="form-group">
@@ -365,33 +389,37 @@ const Dashboard = ({
                         className="form-control"
                         id="stage"
                         placeholder="Enter Stage"
+                        min={0}
+                        max={3}
                         value={stage}
                         onChange={(event) => {
                           setStage(event.target.value);
                         }}
+                        required
                       />
                     </div>
 
-                    {/* <button type="submit" className="btn btn-primary">
-                ADD TASK
-              </button> */}
+                    <button type="submit" className="btn btn-primary">
+                      ADD TASK
+                    </button>
+                    <button
+                      style={{ marginLeft: "1rem" }}
+                      type="button"
+                      className="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
                   </form>
                 </div>
-                <div class="modal-footer">
-                  <button
+                <div className="modal-footer">
+                  {/* <button
                     type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     onClick={submitHandler}
                   >
                     Save changes
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -410,6 +438,9 @@ const mapStateToProps = (state) => {
   return {
     // tasks: state.TaskManagementReducer,
     // loading: state.TaskManagementReducer.loading,
+    userName: state.AuthenticationReducer.data
+      ? state.AuthenticationReducer.data.name
+      : null,
     tasks: state.TaskManagementReducer.tasks,
     activeUser: state.AuthenticationReducer.activeUser,
   };
