@@ -40,3 +40,12 @@ export const updateUserTaskStage = (taskId, newStage) => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const deleteUserTask = (taskId) => async (dispatch) => {
+  try {
+    await axios.delete(`http://localhost:3000/userTasks/${taskId}`);
+    console.log("Task Deleted");
+  } catch (err) {
+    console.log(err);
+  }
+};

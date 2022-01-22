@@ -6,6 +6,7 @@ import {
   fetchUserTask,
   addUserTask,
   updateUserTaskStage,
+  deleteUserTask,
 } from "../../Redux/TaskManagement/TaskManagementActions";
 import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
 const Dashboard = ({
@@ -14,6 +15,7 @@ const Dashboard = ({
   fetchUserTasks,
   addUserTask,
   updateUserTaskStage,
+  deleteUserTask,
 }) => {
   const history = useHistory();
   const [taskName, setTaskName] = useState("");
@@ -55,6 +57,11 @@ const Dashboard = ({
     // console.log("Hello");
     // history.push("/dashboard");
     // <Redirect to="/dashboard" />;
+  };
+  const deleteTask = (taskId) => {
+    deleteUserTask(taskId);
+    fetchUserTask();
+    setVal(val + 1);
   };
   return (
     <div>
@@ -154,6 +161,15 @@ const Dashboard = ({
                           >
                             Next
                           </button>
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
+                          </button>
                         </li>
                       );
                     } else {
@@ -187,6 +203,15 @@ const Dashboard = ({
                             }}
                           >
                             Next
+                          </button>{" "}
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
                           </button>
                         </li>
                       );
@@ -221,6 +246,15 @@ const Dashboard = ({
                             }}
                           >
                             Next
+                          </button>{" "}
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
                           </button>
                         </li>
                       );
@@ -250,6 +284,15 @@ const Dashboard = ({
                           </button>{" "}
                           <button className="btn btn-success disabled">
                             Next
+                          </button>{" "}
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
                           </button>
                         </li>
                       );
@@ -284,6 +327,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateUserTaskStage: (taskId, newStage) => {
       dispatch(updateUserTaskStage(taskId, newStage));
+    },
+    deleteUserTask: (taskId) => {
+      dispatch(deleteUserTask(taskId));
     },
   };
 };
