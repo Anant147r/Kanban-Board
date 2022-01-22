@@ -23,16 +23,32 @@
       "taskName": "New task",
       "priority": "155",
       "deadLine": "sdf",
-      "stage": "11",
+      "stage": 2,
       "id": 2
     },
     {
       "userId": 1,
-      "taskName": "Dummy Task",
-      "priority": "155",
-      "deadLine": "sdf",
+      "taskName": "asdf",
+      "priority": "545",
+      "deadLine": "dsafadsf",
       "stage": 0,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "taskName": "asdf",
+      "priority": "5",
+      "deadLine": "dsafadsf",
+      "stage": 2,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "taskName": "Dummy Task",
+      "priority": "545",
+      "deadLine": "22",
+      "stage": 0,
+      "id": 6
     }
   ]
 }

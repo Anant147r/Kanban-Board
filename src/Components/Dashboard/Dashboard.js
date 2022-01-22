@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { useHistory, Redirect } from "react-router-dom";
+// import { useHistory, Redirect } from "react-router-dom";
+import Task from "./Task/Task";
 import {
   fetchUserTask,
   addUserTask,
   updateUserTaskStage,
   deleteUserTask,
 } from "../../Redux/TaskManagement/TaskManagementActions";
-import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
+// import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
+import styles from "./Dashboard.module.css";
 const Dashboard = ({
   activeUser,
   addUserTask,
@@ -47,27 +49,230 @@ const Dashboard = ({
     // history.push("/dashboard");
     // window.open("/dashboard");
   };
-  const updateStage = (taskId, newStage) => {
-    updateUserTaskStage(taskId, newStage);
-    fetchUserTask();
-    setVal(val + 1);
-    // console.log("Hello");
-    // history.push("/dashboard");
-    // <Redirect to="/dashboard" />;
-  };
-  const deleteTask = (taskId) => {
-    deleteUserTask(taskId);
-    fetchUserTask();
+  const incrementValue = () => {
     setVal(val + 1);
   };
+  // const updateStage = (taskId, newStage) => {
+  //   updateUserTaskStage(taskId, newStage);
+  //   fetchUserTask();
+  //   setVal(val + 1);
+  //   };
+  // const deleteTask = (taskId) => {
+  //   deleteUserTask(taskId);
+  //   fetchUserTask();
+  //   setVal(val + 1);
+  // };
   return (
     <div>
       {loading ? (
         <div>Loading</div>
       ) : (
-        <div>
+        <div className={`${styles.dashboard} container`}>
+          <div className={`${styles.tasks}`}>
+            <div>
+              <div>Backlog</div>
+              <ul>
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 0) {
+                      return (
+                        <li key={index}>
+                          <Task
+                            taskName={item.taskName}
+                            priority={item.priority}
+                            deadline={item.deadLine}
+                            stage={item.stage}
+                            taskId={item.id}
+                            incrementValue={() => {
+                              incrementValue();
+                            }}
+                          />
+                          {/* <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button className="btn btn-success disabled">
+                            Previous
+                          </button>{" "}
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage + 1);
+                            }}
+                          >
+                            Next
+                          </button>
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
+                          </button> */}
+                        </li>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+              </ul>
+            </div>
+            <div>
+              <div>To Do</div>
+              <ul>
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 1) {
+                      return (
+                        <li key={index}>
+                          <Task
+                            taskName={item.taskName}
+                            priority={item.priority}
+                            deadline={item.deadLine}
+                            stage={item.stage}
+                            taskId={item.id}
+                            incrementValue={() => {
+                              incrementValue();
+                            }}
+                          />
+                          {/* <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage - 1);
+                            }}
+                          >
+                            Previous
+                          </button>{" "}
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage + 1);
+                            }}
+                          >
+                            Next
+                          </button>{" "}
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
+                          </button> */}
+                        </li>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+              </ul>
+            </div>
+            <div>
+              <div>On Going</div>
+              <ul>
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 2) {
+                      return (
+                        <li key={index}>
+                          <Task
+                            taskName={item.taskName}
+                            priority={item.priority}
+                            deadline={item.deadLine}
+                            stage={item.stage}
+                            taskId={item.id}
+                            incrementValue={() => {
+                              incrementValue();
+                            }}
+                          />
+                          {/* <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage - 1);
+                            }}
+                          >
+                            Previous
+                          </button>{" "}
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage + 1);
+                            }}
+                          >
+                            Next
+                          </button>{" "}
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
+                          </button> */}
+                        </li>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+              </ul>{" "}
+            </div>
+            <div>
+              <div>Done</div>
+              <ul>
+                {userTasks &&
+                  userTasks.map((item, index) => {
+                    if (item.stage == 3) {
+                      return (
+                        <li key={index}>
+                          <Task
+                            taskName={item.taskName}
+                            priority={item.priority}
+                            deadline={item.deadLine}
+                            stage={item.stage}
+                            taskId={item.id}
+                            incrementValue={() => {
+                              incrementValue();
+                            }}
+                          />
+                          {/* <div>Task Name</div>
+                          <div>{item.taskName} </div>
+                          <button
+                            className="btn btn-success"
+                            onClick={() => {
+                              updateStage(item.id, item.stage - 1);
+                            }}
+                          >
+                            Previous
+                          </button>{" "}
+                          <button className="btn btn-success disabled">
+                            Next
+                          </button>{" "}
+                          <br />
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => {
+                              deleteTask(item.id);
+                            }}
+                          >
+                            Delete
+                          </button> */}
+                        </li>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+              </ul>
+            </div>
+          </div>
           <h5>Add Task</h5>
-
           <form onSubmit={submitHandler}>
             <div className="form-group">
               <label htmlFor="taskName">Task Name</label>
@@ -133,173 +338,6 @@ const Dashboard = ({
               ADD TASK
             </button>
           </form>
-
-          <div
-            style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}
-          >
-            <div>
-              <div>Backlog</div>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 0) {
-                      return (
-                        <li key={index}>
-                          <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button className="btn btn-success disabled">
-                            Previous
-                          </button>{" "}
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage + 1);
-                            }}
-                          >
-                            Next
-                          </button>
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>
-            </div>
-            <div>
-              <div>To Do</div>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 1) {
-                      return (
-                        <li key={index}>
-                          <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage - 1);
-                            }}
-                          >
-                            Previous
-                          </button>{" "}
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage + 1);
-                            }}
-                          >
-                            Next
-                          </button>{" "}
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>
-            </div>
-            <div>
-              <div>On Going</div>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 2) {
-                      return (
-                        <li key={index}>
-                          <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage - 1);
-                            }}
-                          >
-                            Previous
-                          </button>{" "}
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage + 1);
-                            }}
-                          >
-                            Next
-                          </button>{" "}
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>{" "}
-            </div>
-            <div>
-              <div>Done</div>
-              <ul>
-                {userTasks &&
-                  userTasks.map((item, index) => {
-                    if (item.stage == 3) {
-                      return (
-                        <li key={index}>
-                          <div>Task Name</div>
-                          <div>{item.taskName} </div>
-                          <button
-                            className="btn btn-success"
-                            onClick={() => {
-                              updateStage(item.id, item.stage - 1);
-                            }}
-                          >
-                            Previous
-                          </button>{" "}
-                          <button className="btn btn-success disabled">
-                            Next
-                          </button>{" "}
-                          <br />
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => {
-                              deleteTask(item.id);
-                            }}
-                          >
-                            Delete
-                          </button>
-                        </li>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-              </ul>
-            </div>
-          </div>
         </div>
       )}
     </div>
