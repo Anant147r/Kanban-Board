@@ -3,6 +3,7 @@ import {
   REGISTER,
   LOGIN_SUCCESS,
   REGISTER_SUCCESS,
+  LOGOUT,
 } from "./AuthenticationTypes";
 const intialState = {
   isAuthenticated: false,
@@ -27,6 +28,14 @@ const AuthenticationReducer = (state = intialState, action) => {
         ...state,
         loading: false,
         data: payload,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: false,
+        activeUser: null,
+        data: null,
+        loading: false,
       };
     default:
       return state;

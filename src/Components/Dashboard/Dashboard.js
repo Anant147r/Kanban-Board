@@ -10,14 +10,11 @@ import {
 } from "../../Redux/TaskManagement/TaskManagementActions";
 import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
 const Dashboard = ({
-  tasks,
   activeUser,
-  fetchUserTasks,
   addUserTask,
   updateUserTaskStage,
   deleteUserTask,
 }) => {
-  const history = useHistory();
   const [taskName, setTaskName] = useState("");
   const [priority, setPriority] = useState("");
   const [deadLine, setDeadline] = useState("");

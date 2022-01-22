@@ -1,7 +1,6 @@
 import axios from "axios";
-import { LOGIN_SUCCESS, REGISTER_SUCCESS } from "./AuthenticationTypes";
+import { LOGIN_SUCCESS, REGISTER_SUCCESS, LOGOUT } from "./AuthenticationTypes";
 // import { FETCH_SUCESSFUL } from "../TaskManagement/TaskManagementTypes";
-// import { useHistory } from "react-router-dom";
 
 export const login = (data) => async (dispatch) => {
   const { email, password } = data;
@@ -55,4 +54,8 @@ export const register = (data) => async (dispatch) => {
     // window.open("/dashboard", "_self");
     // history.push("/dashboard");
   } catch (err) {}
+};
+
+export const logout = () => async (dispatch) => {
+  dispatch({ type: LOGOUT });
 };

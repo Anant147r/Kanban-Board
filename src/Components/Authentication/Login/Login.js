@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../Redux/Authentication/AuthenticationActions";
+import styles from "./Login.module.css";
 // import axios from "axios";
 const Login = ({ state, loginUser }) => {
   const history = useHistory();
@@ -20,15 +21,6 @@ const Login = ({ state, loginUser }) => {
     } catch (err) {
       console.log(err);
     }
-    // console.log(email, password);
-    // axios
-    //   .get("http://localhost:3000/employees")
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
 
   useEffect(() => {
@@ -39,8 +31,8 @@ const Login = ({ state, loginUser }) => {
   }, [state.isAuthenticated]);
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
+    <div className={`${styles.loginPage} container`}>
+      <form className={`${styles.loginForm}`} onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
           <input

@@ -19,12 +19,12 @@
   ],
   "userTasks": [
     {
-      "userId": "1",
-      "taskName": "backlog4",
-      "priority": "",
-      "deadline": "",
-      "stage": 3,
-      "id": 1
+      "userId": 1,
+      "taskName": "New task",
+      "priority": "155",
+      "deadLine": "sdf",
+      "stage": "1",
+      "id": 2
     }
   ]
 }
