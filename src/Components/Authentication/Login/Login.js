@@ -37,7 +37,7 @@ const Login = ({ state, loginUser }) => {
           <label htmlFor="exampleInputEmail1">Email address</label>
           <input
             type="email"
-            className="form-control"
+            className="form-control input"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
@@ -54,7 +54,7 @@ const Login = ({ state, loginUser }) => {
           <label htmlFor="exampleInputPassword1">Password</label>
           <input
             type="password"
-            className="form-control"
+            className="form-control input"
             id="exampleInputPassword1"
             placeholder="Password"
             value={password}

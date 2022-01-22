@@ -23,8 +23,16 @@
       "taskName": "New task",
       "priority": "155",
       "deadLine": "sdf",
-      "stage": "1",
+      "stage": "11",
       "id": 2
+    },
+    {
+      "userId": 1,
+      "taskName": "Dummy Task",
+      "priority": "155",
+      "deadLine": "sdf",
+      "stage": 0,
+      "id": 3
     }
   ]
 }

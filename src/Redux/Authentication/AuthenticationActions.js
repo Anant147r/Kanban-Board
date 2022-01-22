@@ -16,7 +16,7 @@ export const login = (data) => async (dispatch) => {
         // dispatch({ type: FETCH_SUCESSFUL, payload: taskResponse.data });
       } else count++;
     }
-    if (count === res.data.length) console.log("User do not exists");
+    if (count === res.data.length) alert("Invalid Credentials");
   } catch (err) {
     console.log(err);
   }

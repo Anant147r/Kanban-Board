@@ -2,6 +2,7 @@ import React from "react";
 import Body from "./Components/Body/body";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
+import "./App.css";
 function App() {
   return (
     <div className="App">
