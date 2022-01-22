@@ -20,35 +20,27 @@
   "userTasks": [
     {
       "userId": 1,
-      "taskName": "New task",
-      "priority": "155",
-      "deadLine": "sdf",
-      "stage": 2,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "taskName": "asdf",
-      "priority": "545",
-      "deadLine": "dsafadsf",
-      "stage": 0,
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "taskName": "asdf",
-      "priority": "5",
-      "deadLine": "dsafadsf",
-      "stage": 2,
-      "id": 5
-    },
-    {
-      "userId": 1,
       "taskName": "Dummy Task",
       "priority": "545",
       "deadLine": "22",
-      "stage": 0,
+      "stage": 1,
       "id": 6
+    },
+    {
+      "userId": 1,
+      "taskName": "",
+      "priority": "",
+      "deadLine": "",
+      "stage": 0,
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "taskName": "New task",
+      "priority": "\t546",
+      "deadLine": "adsfad",
+      "stage": "3",
+      "id": 9
     }
   ]
 }

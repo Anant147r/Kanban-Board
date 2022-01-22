@@ -15,8 +15,6 @@ const Task = ({
   updateUserTaskStage,
   deleteUserTask,
   incrementValue,
-  prev,
-  next,
 }) => {
   const updateStage = (taskId, newStage) => {
     updateUserTaskStage(taskId, newStage);
@@ -31,22 +29,41 @@ const Task = ({
     incrementValue();
   };
   return (
-    <div className={`${styles.task}`}>
-      <div>Task Name</div>
-      <div>{taskName} </div>
+    <div
+      className={`${styles.task} container`}
+      style={{
+        border: "1px solid #CED4DA",
+        textAlign: "center",
+        padding: "1rem",
+        borderRadius: "10px",
+      }}
+    >
+      <div className={`${styles.taskName}`}>
+        <span>Task Name - </span>
+        <span style={{ fontWeight: "600" }}>{taskName} </span>
+      </div>
+      <div className={`${styles.taskPriority}`}>
+        <span>Priority - </span>
+        <span style={{ fontWeight: "600" }}>{priority}</span>
+      </div>
+      <div className={`${styles.taskDeadline}`}>
+        <span>Deadline - </span>
+        <span style={{ fontWeight: "600" }}>{deadline}</span>
+      </div>
       <button
         // className={`btn btn-success ${!prev ? "disabled" : ""}`}
-        className="btn btn-success"
+        className={`${styles.button} btn btn-success`}
         disabled={stage == 0 ? true : false}
         onClick={() => {
           updateStage(taskId, parseInt(stage) - 1);
         }}
       >
         Previous
-      </button>{" "}
+      </button>
+      <br></br>
       <button
         // className={`btn btn-success ${!next ? "disabled" : ""}`}
-        className="btn btn-success"
+        className={`${styles.button} btn btn-success`}
         disabled={stage == 3 ? true : false}
         onClick={() => {
           updateStage(taskId, parseInt(stage) + 1);
@@ -56,7 +73,7 @@ const Task = ({
       </button>
       <br />
       <button
-        className="btn btn-danger"
+        className={`${styles.button} btn btn-danger`}
         onClick={() => {
           deleteTask(taskId);
         }}

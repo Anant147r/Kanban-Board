@@ -67,10 +67,16 @@ const Dashboard = ({
       {loading ? (
         <div>Loading</div>
       ) : (
-        <div className={`${styles.dashboard} container`}>
-          <div className={`${styles.tasks}`}>
+        <div
+          className={`${styles.dashboard} container`}
+          // style={{ border: "1px solid black" }}
+        >
+          <div
+            className={`${styles.tasks}`}
+            // style={{ border: "1px solid black" }}
+          >
             <div>
-              <div>Backlog</div>
+              <h3 className={`${styles.heading}`}>Backlog</h3>
               <ul>
                 {userTasks &&
                   userTasks.map((item, index) => {
@@ -118,7 +124,7 @@ const Dashboard = ({
               </ul>
             </div>
             <div>
-              <div>To Do</div>
+              <h3 className={`${styles.heading}`}>To Do</h3>
               <ul>
                 {userTasks &&
                   userTasks.map((item, index) => {
@@ -171,7 +177,7 @@ const Dashboard = ({
               </ul>
             </div>
             <div>
-              <div>On Going</div>
+              <h3 className={`${styles.heading}`}>On Going</h3>
               <ul>
                 {userTasks &&
                   userTasks.map((item, index) => {
@@ -224,7 +230,7 @@ const Dashboard = ({
               </ul>{" "}
             </div>
             <div>
-              <div>Done</div>
+              <h3 className={`${styles.heading}`}>Done</h3>
               <ul>
                 {userTasks &&
                   userTasks.map((item, index) => {
@@ -272,72 +278,129 @@ const Dashboard = ({
               </ul>
             </div>
           </div>
-          <h5>Add Task</h5>
-          <form onSubmit={submitHandler}>
-            <div className="form-group">
-              <label htmlFor="taskName">Task Name</label>
-              <input
-                type="text"
-                className="form-control"
-                id="taskName"
-                aria-describedby="taskNameHelp"
-                placeholder="Enter Task"
-                value={taskName}
-                onChange={(event) => {
-                  setTaskName(event.target.value);
-                }}
-              />
-              {/* <small id="emailHelp" className="form-text text-muted">
-                We'll never share your email with anyone else.
-              </small> */}
+
+          <button
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#taskForm"
+            style={{
+              // border: "1px solid black",
+              display: "block",
+              margin: "0 auto",
+              marginTop: "3rem",
+            }}
+          >
+            Add A New Task
+          </button>
+
+          <div
+            class="modal fade"
+            id="taskForm"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="taskFormTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">
+                    Welcome To The Task Form
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form onSubmit={submitHandler}>
+                    <div className="form-group">
+                      <label htmlFor="taskName">Task Name</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="taskName"
+                        aria-describedby="taskNameHelp"
+                        placeholder="Enter Task"
+                        value={taskName}
+                        onChange={(event) => {
+                          setTaskName(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="priority">Priority</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="priority"
+                        placeholder="Enter Priotrity"
+                        value={priority}
+                        onChange={(event) => {
+                          setPriority(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="deadline">Deadline</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="deadline"
+                        placeholder="Enter Deadline"
+                        value={deadLine}
+                        onChange={(event) => {
+                          setDeadline(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="stage">Stage</label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="stage"
+                        placeholder="Enter Stage"
+                        value={stage}
+                        onChange={(event) => {
+                          setStage(event.target.value);
+                        }}
+                      />
+                    </div>
+
+                    {/* <button type="submit" className="btn btn-primary">
+                ADD TASK
+              </button> */}
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onClick={submitHandler}
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="priority">Priority</label>
-              <input
-                type="text"
-                className="form-control"
-                id="priority"
-                placeholder="Enter Priotrity"
-                value={priority}
-                onChange={(event) => {
-                  setPriority(event.target.value);
-                }}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="deadline">Deadline</label>
-              <input
-                type="text"
-                className="form-control"
-                id="deadline"
-                placeholder="Enter Deadline"
-                value={deadLine}
-                onChange={(event) => {
-                  setDeadline(event.target.value);
-                }}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="stage">Stage</label>
-              <input
-                type="number"
-                className="form-control"
-                id="stage"
-                placeholder="Enter Stage"
-                value={stage}
-                onChange={(event) => {
-                  setStage(event.target.value);
-                }}
-              />
-            </div>
-            {/* <div className="form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-  </div> */}
-            <button type="submit" className="btn btn-primary">
-              ADD TASK
-            </button>
-          </form>
+          </div>
+
+          {/* <div className={styles.formForTask}>
+            <h5>Add Task</h5>
+            
+          </div> */}
         </div>
       )}
     </div>
