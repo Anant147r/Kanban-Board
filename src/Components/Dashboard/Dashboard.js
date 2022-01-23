@@ -19,7 +19,7 @@ const Dashboard = ({
   deleteUserTask,
 }) => {
   const [taskName, setTaskName] = useState("");
-  const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState("low");
   const [deadLine, setDeadline] = useState("");
   const [stage, setStage] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -357,7 +357,7 @@ const Dashboard = ({
                     </div>
                     <div className="form-group">
                       <label htmlFor="priority">Priority</label>
-                      <input
+                      {/* <input
                         type="number"
                         className="form-control"
                         id="priority"
@@ -369,7 +369,17 @@ const Dashboard = ({
                           setPriority(event.target.value);
                         }}
                         required
-                      />
+                      /> */}
+                      <select
+                        value={priority}
+                        onChange={(event) => {
+                          setPriority(event.target.value);
+                        }}
+                      >
+                        <option>low</option>
+                        <option>medium</option>
+                        <option>high</option>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label htmlFor="deadline">Deadline</label>
