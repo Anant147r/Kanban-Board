@@ -9,21 +9,30 @@
       "id": 1
     },
     {
-      "name": "gaurav",
-      "userName": "rawatgaurav2",
-      "email": "rawatgaurav2@gmail.com",
+      "name": "GAURAV",
+      "userName": "GAURAV",
+      "email": "GAURAV@gmail.com",
       "number": "9412971220",
       "password": "Gaurav2@",
-      "id": 3
-    },
-    {
-      "name": "Anant Rawat",
-      "userName": "Mon2",
-      "email": "anant5.rawat5@gmail.com",
-      "number": "8888888888",
-      "password": "123456",
-      "id": 4
+      "id": 2
     }
   ],
-  "userTasks": []
+  "userTasks": [
+    {
+      "userId": 1,
+      "taskName": "Test task 2",
+      "priority": "5",
+      "deadLine": "2022-01-01",
+      "stage": 1,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "taskName": "tds return",
+      "priority": "1",
+      "deadLine": "2022-01-24",
+      "stage": 0,
+      "id": 3
+    }
+  ]
 }

@@ -72,9 +72,15 @@ const Dashboard = ({
       ) : (
         <div
           className={`${styles.dashboard} container`}
-          // style={{ border: "1px solid black" }}
+          style={{ border: "1px solid #D2D8DD", borderRadius: "10px" }}
         >
-          <h3 style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <h3
+            style={{
+              textAlign: "center",
+              marginBottom: "2rem",
+              marginTop: "2rem",
+            }}
+          >
             Welcome {userName ? userName : ""}
           </h3>
           <button

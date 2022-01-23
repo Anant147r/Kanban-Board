@@ -8,14 +8,18 @@ const Login = ({ state, loginUser }) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isEmail, setIsEmail] = useState(false);
   const clearStateValues = () => {
     setEmail("");
     setPassword("");
   };
   const submitHandler = async (event) => {
     event.preventDefault();
+    if (email.includes("@") === true) setIsEmail(true);
+    else setIsEmail(false);
+
     try {
-      const res = await loginUser({ email, password });
+      const res = await loginUser({ email, password, isEmail });
       clearStateValues();
       // console.log(res);
     } catch (err) {
@@ -34,13 +38,13 @@ const Login = ({ state, loginUser }) => {
     <div className={`${styles.loginPage} container`}>
       <form className={`${styles.loginForm}`} onSubmit={submitHandler}>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1">Email Address/Username</label>
           <input
-            type="email"
+            // type="email"
             className="form-control input"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            placeholder="Enter email"
+            placeholder="Enter email or username"
             value={email}
             onChange={(event) => {
               setEmail(event.target.value);
