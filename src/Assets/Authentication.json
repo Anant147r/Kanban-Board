@@ -7,41 +7,7 @@
       "number": "1111222255",
       "password": "123456",
       "id": 1
-    },
-    {
-      "name": "GAURAV",
-      "userName": "GAURAV",
-      "email": "GAURAV@gmail.com",
-      "number": "9412971220",
-      "password": "Gaurav2@",
-      "id": 2
     }
   ],
-  "userTasks": [
-    {
-      "userId": 2,
-      "taskName": "tds return",
-      "priority": "1",
-      "deadLine": "2022-01-24",
-      "stage": 0,
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "taskName": "Test task",
-      "priority": "low",
-      "deadLine": "2022-01-27",
-      "stage": 2,
-      "id": 5,
-      "deadline": "2022-01-27"
-    },
-    {
-      "userId": 1,
-      "taskName": "Dummy Task",
-      "priority": "high",
-      "deadLine": "2022-01-22",
-      "stage": 0,
-      "id": 7
-    }
-  ]
+  "userTasks": []
 }
