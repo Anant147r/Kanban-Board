@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 // import { useHistory, Redirect } from "react-router-dom";
@@ -9,12 +9,14 @@ import {
   updateUserTaskStage,
   deleteUserTask,
 } from "../../Redux/TaskManagement/TaskManagementActions";
+import { useHistory } from "react-router-dom";
 // import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
 import styles from "./Dashboard.module.css";
 const Dashboard = ({
   userName,
   activeUser,
   addUserTask,
+  isAuthenticated,
   updateUserTaskStage,
   deleteUserTask,
 }) => {
@@ -25,6 +27,7 @@ const Dashboard = ({
   const [loading, setLoading] = useState(true);
   const [userTasks, setUserTasks] = useState([]);
   const [val, setVal] = useState(1);
+  const history = useHistory();
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
@@ -39,6 +42,10 @@ const Dashboard = ({
     // console.log(userInfo);
     fetchTasks();
   }, [val, fetchUserTask]);
+
+  useEffect(() => {
+    if (!isAuthenticated) history.push("/");
+  }, []);
   const submitHandler = (event) => {
     event.preventDefault();
     addUserTask({ userId: activeUser, taskName, priority, deadLine, stage });
@@ -456,6 +463,7 @@ const mapStateToProps = (state) => {
       : null,
     tasks: state.TaskManagementReducer.tasks,
     activeUser: state.AuthenticationReducer.activeUser,
+    isAuthenticated: state.AuthenticationReducer.isAuthenticated,
   };
 };
 
