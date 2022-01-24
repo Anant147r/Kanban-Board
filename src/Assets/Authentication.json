@@ -7,7 +7,32 @@
       "number": "1111222255",
       "password": "123456",
       "id": 1
+    },
+    {
+      "name": "Gaurav Rawat",
+      "userName": "Gaurav",
+      "email": "gaurav@gmail.com",
+      "number": "8888888888",
+      "password": "123",
+      "id": 2
     }
   ],
-  "userTasks": []
+  "userTasks": [
+    {
+      "userId": 1,
+      "taskName": "Dummy Task",
+      "priority": "medium",
+      "deadLine": "2022-01-06",
+      "stage": 0,
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "taskName": "Test task 2",
+      "priority": "medium",
+      "deadLine": "2022-01-06",
+      "stage": 0,
+      "id": 2
+    }
+  ]
 }

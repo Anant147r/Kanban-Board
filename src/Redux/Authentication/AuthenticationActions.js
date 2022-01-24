@@ -6,10 +6,24 @@ export const login = (data) => async (dispatch) => {
   const { email, password } = data;
   try {
     const res = await axios.get("http://localhost:3000/employees");
+    // console.log(isEmail);
+    var isEmail;
+    if (email.includes("@")) {
+      // console.log(true);
+      isEmail = true;
+    } else {
+      // console.log(false);
+      isEmail = false;
+    }
+
     const data = res.data;
     var count = 0;
     for (let item of data) {
-      if (item.email === email && item.password === password) {
+      if (
+        ((isEmail && item.email === email) ||
+          (!isEmail && item.userName === email)) &&
+        item.password === password
+      ) {
         console.log("User exists");
         dispatch({ type: LOGIN_SUCCESS, payload: item });
         // const taskResponse = await axios.get("http://localhost:3000/userTasks");
