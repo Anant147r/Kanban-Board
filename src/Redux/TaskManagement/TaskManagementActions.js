@@ -36,7 +36,7 @@ export const updateUserTaskStage = (taskId, newStage) => async (dispatch) => {
       stage: newStage,
     });
     // const res=await axios.get("htt")
-    console.log("done");
+    // console.log("done");
   } catch (err) {
     console.log(err);
   }
@@ -60,7 +60,7 @@ export const updateUserStageDetails =
         deadLine: newDetails.deadLine,
       });
       // const res=await axios.get("htt")
-      console.log("done");
+      // console.log("done");
     } catch (err) {
       console.log(err);
     }

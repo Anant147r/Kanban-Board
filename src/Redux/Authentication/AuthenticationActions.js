@@ -24,7 +24,7 @@ export const login = (data) => async (dispatch) => {
           (!isEmail && item.userName === email)) &&
         item.password === password
       ) {
-        console.log("User exists");
+        // console.log("User exists");
         dispatch({ type: LOGIN_SUCCESS, payload: item });
         // const taskResponse = await axios.get("http://localhost:3000/userTasks");
         // dispatch({ type: FETCH_SUCESSFUL, payload: taskResponse.data });
