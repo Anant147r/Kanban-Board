@@ -43,10 +43,16 @@ export const register = (data) => async (dispatch) => {
     const res1 = await axios.get(
       `http://localhost:3000/employees?email=${email}`
     );
+
+    const res2 = await axios.get(
+      `http://localhost:3000/employees?userName=${userName}`
+    );
     console.log(res1);
     if (res1.data.length !== 0) {
       // console.log("User already exists");
       alert(`User with email ${email} already exists`);
+    } else if (res2.data.length !== 0) {
+      alert(`User with username ${userName} already exists`);
     } else {
       const res = await axios.post("http://localhost:3000/employees", {
         name,
