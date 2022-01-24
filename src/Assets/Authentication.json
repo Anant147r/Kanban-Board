@@ -28,19 +28,20 @@
     },
     {
       "userId": 1,
-      "taskName": "Test task 2",
-      "priority": "high",
+      "taskName": "Test task",
+      "priority": "low",
       "deadLine": "2022-01-27",
-      "stage": 0,
-      "id": 5
+      "stage": 2,
+      "id": 5,
+      "deadline": "2022-01-27"
     },
     {
       "userId": 1,
-      "taskName": "Test task 2sdfs",
+      "taskName": "Dummy Task",
       "priority": "high",
-      "deadLine": "2022-01-28",
-      "stage": "3",
-      "id": 6
+      "deadLine": "2022-01-22",
+      "stage": 0,
+      "id": 7
     }
   ]
 }

@@ -395,7 +395,7 @@ const Dashboard = ({
                         required
                       />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                       <label htmlFor="stage">Stage</label>
                       <input
                         type="number"
@@ -410,7 +410,7 @@ const Dashboard = ({
                         }}
                         required
                       />
-                    </div>
+                    </div> */}
 
                     <button type="submit" className="btn btn-primary">
                       ADD TASK

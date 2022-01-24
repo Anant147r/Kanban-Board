@@ -8,18 +8,19 @@ const Login = ({ state, loginUser }) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isEmail, setIsEmail] = useState(false);
+  // const [isEmail, setIsEmail] = useState(false);
   const clearStateValues = () => {
     setEmail("");
     setPassword("");
+    // setIsEmail(false);
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (email.includes("@") === true) setIsEmail(true);
-    else setIsEmail(false);
+    // if (email.includes("@") === true) setIsEmail(true);
+    // else setIsEmail(false);
 
     try {
-      const res = await loginUser({ email, password, isEmail });
+      const res = await loginUser({ email, password });
       clearStateValues();
       // console.log(res);
     } catch (err) {

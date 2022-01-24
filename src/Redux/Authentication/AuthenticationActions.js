@@ -3,17 +3,13 @@ import { LOGIN_SUCCESS, REGISTER_SUCCESS, LOGOUT } from "./AuthenticationTypes";
 // import { FETCH_SUCESSFUL } from "../TaskManagement/TaskManagementTypes";
 
 export const login = (data) => async (dispatch) => {
-  const { email, password, isEmail } = data;
+  const { email, password } = data;
   try {
     const res = await axios.get("http://localhost:3000/employees");
     const data = res.data;
     var count = 0;
     for (let item of data) {
-      if (
-        ((isEmail && item.email === email) ||
-          (!isEmail && item.userName === email)) &&
-        item.password === password
-      ) {
+      if (item.email === email && item.password === password) {
         console.log("User exists");
         dispatch({ type: LOGIN_SUCCESS, payload: item });
         // const taskResponse = await axios.get("http://localhost:3000/userTasks");
