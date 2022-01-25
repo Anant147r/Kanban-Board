@@ -11,6 +11,7 @@ import {
 } from "../../Redux/TaskManagement/TaskManagementActions";
 import { useHistory } from "react-router-dom";
 // import { FETCH_USER_TASK } from "../../Redux/TaskManagement/TaskManagementTypes";
+import { BASE_URL } from "../../Assets/URL/URL";
 import styles from "./Dashboard.module.css";
 const Dashboard = ({
   userName,
@@ -31,7 +32,8 @@ const Dashboard = ({
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/userTasks?userId=${activeUser}`
+        BASE_URL + `userTasks?userId=${activeUser}`
+        // `http://localhost:3000/userTasks?userId=${activeUser}`
       );
       setUserTasks(res.data);
       setLoading(false);
@@ -62,16 +64,7 @@ const Dashboard = ({
   const incrementValue = () => {
     setVal(val + 1);
   };
-  // const updateStage = (taskId, newStage) => {
-  //   updateUserTaskStage(taskId, newStage);
-  //   fetchUserTask();
-  //   setVal(val + 1);
-  //   };
-  // const deleteTask = (taskId) => {
-  //   deleteUserTask(taskId);
-  //   fetchUserTask();
-  //   setVal(val + 1);
-  // };
+
   return (
     <div>
       {loading ? (
@@ -131,28 +124,6 @@ const Dashboard = ({
                                 incrementValue();
                               }}
                             />
-                            {/* <div>Task Name</div>
-                  <div>{item.taskName} </div>
-                  <button className="btn btn-success disabled">
-                    Previous
-                  </button>{" "}
-                  <button
-                    className="btn btn-success"
-                    onClick={() => {
-                      updateStage(item.id, item.stage + 1);
-                    }}
-                  >
-                    Next
-                  </button>
-                  <br />
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      deleteTask(item.id);
-                    }}
-                  >
-                    Delete
-                  </button> */}
                           </div>
                         );
                       } else {
@@ -179,33 +150,6 @@ const Dashboard = ({
                                 incrementValue();
                               }}
                             />
-                            {/* <div>Task Name</div>
-                  <div>{item.taskName} </div>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => {
-                      updateStage(item.id, item.stage - 1);
-                    }}
-                  >
-                    Previous
-                  </button>{" "}
-                  <button
-                    className="btn btn-success"
-                    onClick={() => {
-                      updateStage(item.id, item.stage + 1);
-                    }}
-                  >
-                    Next
-                  </button>{" "}
-                  <br />
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      deleteTask(item.id);
-                    }}
-                  >
-                    Delete
-                  </button> */}
                           </div>
                         );
                       } else {
@@ -232,33 +176,6 @@ const Dashboard = ({
                                 incrementValue();
                               }}
                             />
-                            {/* <div>Task Name</div>
-                  <div>{item.taskName} </div>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => {
-                      updateStage(item.id, item.stage - 1);
-                    }}
-                  >
-                    Previous
-                  </button>{" "}
-                  <button
-                    className="btn btn-success"
-                    onClick={() => {
-                      updateStage(item.id, item.stage + 1);
-                    }}
-                  >
-                    Next
-                  </button>{" "}
-                  <br />
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      deleteTask(item.id);
-                    }}
-                  >
-                    Delete
-                  </button> */}
                           </div>
                         );
                       } else {
@@ -285,28 +202,6 @@ const Dashboard = ({
                                 incrementValue();
                               }}
                             />
-                            {/* <div>Task Name</div>
-                  <div>{item.taskName} </div>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => {
-                      updateStage(item.id, item.stage - 1);
-                    }}
-                  >
-                    Previous
-                  </button>{" "}
-                  <button className="btn btn-success disabled">
-                    Next
-                  </button>{" "}
-                  <br />
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      deleteTask(item.id);
-                    }}
-                  >
-                    Delete
-                  </button> */}
                           </div>
                         );
                       } else {
@@ -364,19 +259,7 @@ const Dashboard = ({
                     </div>
                     <div className="form-group">
                       <label htmlFor="priority">Priority</label>
-                      {/* <input
-                        type="number"
-                        className="form-control"
-                        id="priority"
-                        placeholder="Enter Priotrity"
-                        value={priority}
-                        min={1}
-                        max={10}
-                        onChange={(event) => {
-                          setPriority(event.target.value);
-                        }}
-                        required
-                      /> */}
+
                       <select
                         value={priority}
                         onChange={(event) => {
@@ -402,22 +285,6 @@ const Dashboard = ({
                         required
                       />
                     </div>
-                    {/* <div className="form-group">
-                      <label htmlFor="stage">Stage</label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        id="stage"
-                        placeholder="Enter Stage"
-                        min={0}
-                        max={3}
-                        value={stage}
-                        onChange={(event) => {
-                          setStage(event.target.value);
-                        }}
-                        required
-                      />
-                    </div> */}
 
                     <button type="submit" className="btn btn-primary">
                       ADD TASK
@@ -432,23 +299,10 @@ const Dashboard = ({
                     </button>
                   </form>
                 </div>
-                <div className="modal-footer">
-                  {/* <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={submitHandler}
-                  >
-                    Save changes
-                  </button> */}
-                </div>
+                <div className="modal-footer"></div>
               </div>
             </div>
           </div>
-
-          {/* <div className={styles.formForTask}>
-            <h5>Add Task</h5>
-            
-          </div> */}
         </div>
       )}
     </div>

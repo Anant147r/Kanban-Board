@@ -15,17 +15,17 @@
       "number": "8888888888",
       "password": "123",
       "id": 2
+    },
+    {
+      "name": "Gaurav Rawat",
+      "userName": "Gauraav",
+      "email": "gaurav@gmail.com",
+      "number": "8888888888",
+      "password": "123",
+      "id": 3
     }
   ],
   "userTasks": [
-    {
-      "userId": 1,
-      "taskName": "Task 1",
-      "priority": "high",
-      "deadLine": "2022-01-07",
-      "stage": 0,
-      "id": 4
-    },
     {
       "userId": 2,
       "taskName": "zxcvzxcv",
@@ -33,6 +33,14 @@
       "deadLine": "2022-01-08",
       "stage": 0,
       "id": 5
+    },
+    {
+      "userId": 1,
+      "taskName": "Test task 5",
+      "priority": "low",
+      "deadLine": "2022-01-22",
+      "stage": 3,
+      "id": 6
     }
   ]
 }

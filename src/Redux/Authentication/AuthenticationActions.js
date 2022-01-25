@@ -1,11 +1,14 @@
 import axios from "axios";
 import { LOGIN_SUCCESS, REGISTER_SUCCESS, LOGOUT } from "./AuthenticationTypes";
 // import { FETCH_SUCESSFUL } from "../TaskManagement/TaskManagementTypes";
-
+import { BASE_URL } from "../../Assets/URL/URL";
 export const login = (data) => async (dispatch) => {
   const { email, password } = data;
   try {
-    const res = await axios.get("http://localhost:3000/employees");
+    const res = await axios.get(
+      BASE_URL + "employees"
+      // "http://localhost:3000/employees"
+    );
     // console.log(isEmail);
     var isEmail;
     if (email.includes("@")) {
@@ -41,11 +44,13 @@ export const register = (data) => async (dispatch) => {
   const { name, userName, email, number, password } = data;
   try {
     const res1 = await axios.get(
-      `http://localhost:3000/employees?email=${email}`
+      BASE_URL + `employees?email=${email}`
+      // `http://localhost:3000/employees?email=${email}`
     );
 
     const res2 = await axios.get(
-      `http://localhost:3000/employees?userName=${userName}`
+      BASE_URL + `employees?userName=${userName}`
+      // `http://localhost:3000/employees?userName=${userName}`
     );
     console.log(res1);
     if (res1.data.length !== 0) {
@@ -54,13 +59,17 @@ export const register = (data) => async (dispatch) => {
     } else if (res2.data.length !== 0) {
       alert(`User with username ${userName} already exists`);
     } else {
-      const res = await axios.post("http://localhost:3000/employees", {
-        name,
-        userName,
-        email,
-        number,
-        password,
-      });
+      const res = await axios.post(
+        BASE_URL + "employees",
+        // "http://localhost:3000/employees"
+        {
+          name,
+          userName,
+          email,
+          number,
+          password,
+        }
+      );
       console.log("Done");
       // console.log(res);
       alert("User has been successfully registered");
