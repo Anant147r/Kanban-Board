@@ -7,6 +7,14 @@
       "number": "1111222255",
       "password": "123456",
       "id": 1
+    },
+    {
+      "name": "Anant Rawat",
+      "userName": "Mon2",
+      "email": "anant5.rawat5@gmail.com",
+      "number": "8888888888",
+      "password": "123",
+      "id": 2
     }
   ],
   "userTasks": [
@@ -17,6 +25,14 @@
       "deadLine": "2022-01-07",
       "stage": 0,
       "id": 4
+    },
+    {
+      "userId": 2,
+      "taskName": "zxcvzxcv",
+      "priority": "low",
+      "deadLine": "2022-01-08",
+      "stage": 0,
+      "id": 5
     }
   ]
 }

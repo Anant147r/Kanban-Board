@@ -140,7 +140,7 @@ const Task = ({
                   });
                 }}
               >
-                <div class="form-group">
+                <div class="form-group" style={{ textAlign: "left" }}>
                   <label for="newTaskName">Task Name</label>
                   <input
                     type="text"
@@ -155,7 +155,7 @@ const Task = ({
                     required
                   />
                 </div>
-                <div class="form-group">
+                <div class="form-group" style={{ textAlign: "left" }}>
                   <label for="newPriority">Priority</label>
                   <select
                     value={newPriority}
@@ -168,7 +168,7 @@ const Task = ({
                     <option>high</option>
                   </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style={{ textAlign: "left" }}>
                   <label for="newDeadline">Deadline</label>
                   <input
                     type="date"
