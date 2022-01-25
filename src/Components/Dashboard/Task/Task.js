@@ -103,22 +103,22 @@ const Task = ({
       </button>
 
       <div
-        class="modal fade"
+        className="modal fade"
         id={`newUserDetails${taskId}`}
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby={`newUserDetails${taskId}Title`}
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLongTitle">
                 Enter new user details
               </h5>
               <button
                 type="button"
-                class="close"
+                className="close"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
@@ -128,7 +128,7 @@ const Task = ({
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <form
                 onSubmit={(event) => {
                   event.preventDefault();
@@ -140,11 +140,11 @@ const Task = ({
                   });
                 }}
               >
-                <div class="form-group" style={{ textAlign: "left" }}>
-                  <label for="newTaskName">Task Name</label>
+                <div className="form-group" style={{ textAlign: "left" }}>
+                  <label htmlFor="newTaskName">Task Name</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="newTaskName"
                     aria-describedby="newTaskNameHelp"
                     placeholder="Enter new task name"
@@ -155,8 +155,8 @@ const Task = ({
                     required
                   />
                 </div>
-                <div class="form-group" style={{ textAlign: "left" }}>
-                  <label for="newPriority">Priority</label>
+                <div className="form-group" style={{ textAlign: "left" }}>
+                  <label htmlFor="newPriority">Priority</label>
                   <select
                     value={newPriority}
                     onChange={(event) => {
@@ -168,11 +168,11 @@ const Task = ({
                     <option>high</option>
                   </select>
                 </div>
-                <div class="form-group" style={{ textAlign: "left" }}>
-                  <label for="newDeadline">Deadline</label>
+                <div className="form-group" style={{ textAlign: "left" }}>
+                  <label htmlFor="newDeadline">Deadline</label>
                   <input
                     type="date"
-                    class="form-control"
+                    className="form-control"
                     id="newDeadline"
                     placeholder="Enter new deadline"
                     value={newDeadLine}
@@ -183,7 +183,7 @@ const Task = ({
                   />
                 </div>
 
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" className="btn btn-primary">
                   Submit
                 </button>
               </form>
