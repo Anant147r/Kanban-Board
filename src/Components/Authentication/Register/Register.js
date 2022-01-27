@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { register } from "../../../Redux/Authentication/AuthenticationActions";
 import { useHistory } from "react-router-dom";
+import styles from "./Register.module.css";
 const Register = ({ state, registerUser }) => {
   const history = useHistory();
   // useEffect(() => {
@@ -28,26 +29,9 @@ const Register = ({ state, registerUser }) => {
     event.preventDefault();
     const res = await registerUser({ name, userName, email, number, password });
     clearStateValues();
-    // console.log("Hello32");
-    // const res = await axios.post("http://localhost:3000/employees", {
-    //   name,
-    //   userName,
-    //   email,
-    //   number,
-    //   password,
-    // });
   };
   return (
-    <div
-      className="container"
-      style={{
-        marginTop: "2rem",
-        border: "1px solid #d3d8dd",
-        borderRadius: "10px",
-        padding: "15px",
-        maxWidth: "20rem",
-      }}
-    >
+    <div className={`${styles.registerForm} container`}>
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="name">Name*</label>
@@ -63,9 +47,6 @@ const Register = ({ state, registerUser }) => {
             }}
             required
           />
-          {/* <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small> */}
         </div>
         <div className="form-group">
           <label htmlFor="userName">User Name*</label>
@@ -81,25 +62,23 @@ const Register = ({ state, registerUser }) => {
             }}
             required
           />
-          {/* <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small> */}
         </div>
         <div className="form-group">
           <label htmlFor="inputEmail1">Email address*</label>
           <input
-            type="email"
+            // type="email"
             className="form-control"
             id="inputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
             value={email}
+            pattern="[A-Za-z0-9]{1,}@[A-Za-z]{1,}\.[a-z]{1,}"
             onChange={(event) => {
               setEmail(event.target.value);
             }}
+            title="Please enter a valid email"
             required
           />
-          {/* <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small> */}
         </div>
 
         <div className="form-group">
@@ -130,13 +109,6 @@ const Register = ({ state, registerUser }) => {
             required
           />
         </div>
-        {/* <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
-          </label>
-        </div> */}
-
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

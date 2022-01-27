@@ -1,9 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Login from "../Authentication/Login/Login";
-// import Register from "../Authentication/Register/Register";
 import Navbar from "../Navbar/Navbar";
-// import Dashboard from "../Dashboard/Dashboard";
 const LazyLogin = React.lazy(() => import("../Authentication/Login/Login"));
 const LazyRegister = React.lazy(() =>
   import("../Authentication/Register/Register")

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useDrop } from "react-dnd";
 import axios from "axios";
 // import { useHistory, Redirect } from "react-router-dom";
 import Task from "./Task/Task";
@@ -29,6 +30,55 @@ const Dashboard = ({
   const [userTasks, setUserTasks] = useState([]);
   const [val, setVal] = useState(1);
   const history = useHistory();
+
+  const [{ isOver1 }, drop1] = useDrop(() => ({
+    accept: "task",
+    drop: (item) => addTaskToBoard1(item.taskId),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+  const [{ isOver2 }, drop2] = useDrop(() => ({
+    accept: "task",
+    drop: (item) => addTaskToBoard2(item.taskId),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+  const [{ isOver3 }, drop3] = useDrop(() => ({
+    accept: "task",
+    drop: (item) => addTaskToBoard3(item.taskId),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+  const [{ isOver4 }, drop4] = useDrop(() => ({
+    accept: "task",
+    drop: (item) => addTaskToBoard4(item.taskId),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  const updateTaskStage = (taskId, newStage) => {
+    updateUserTaskStage(taskId, newStage);
+    fetchUserTask();
+    setVal((val) => val + 1);
+  };
+
+  const addTaskToBoard1 = (taskId) => {
+    updateTaskStage(taskId, 0);
+  };
+  const addTaskToBoard2 = (taskId) => {
+    updateTaskStage(taskId, 1);
+  };
+  const addTaskToBoard3 = (taskId) => {
+    updateTaskStage(taskId, 2);
+  };
+  const addTaskToBoard4 = (taskId) => {
+    updateTaskStage(taskId, 3);
+  };
+
   const fetchTasks = async () => {
     try {
       const res = await axios.get(
@@ -36,6 +86,7 @@ const Dashboard = ({
         // `http://localhost:3000/userTasks?userId=${activeUser}`
       );
       setUserTasks(res.data);
+
       setLoading(false);
       return userTasks;
     } catch (err) {}
@@ -56,13 +107,15 @@ const Dashboard = ({
     setDeadline("");
     setStage(0);
     fetchUserTask();
-    setVal(val + 1);
-    alert("Your task has been added");
+    setVal((val) => val + 1);
+
+    // alert("Your task has been added");
+    // document.querySelector(".addTaskCloseButton").click();
     // history.push("/dashboard");
     // window.open("/dashboard");
   };
   const incrementValue = () => {
-    setVal(val + 1);
+    setVal((val) => val + 1);
   };
 
   return (
@@ -70,20 +123,23 @@ const Dashboard = ({
       {loading ? (
         <div>Loading</div>
       ) : (
-        <div
-          className={`${styles.dashboard} container`}
-          style={{ border: "1px solid #D2D8DD", borderRadius: "10px" }}
-        >
-          <h3
-            style={{
-              textAlign: "center",
-              marginBottom: "2rem",
-              marginTop: "2rem",
-            }}
-          >
+        <div className={`${styles.dashboard} container`}>
+          <div className={`${styles.refreshButton}`}>
+            <button
+              className="btn"
+              onClick={() => {
+                fetchUserTask();
+                setVal((val) => val + 1);
+              }}
+            >
+              Refresh
+            </button>{" "}
+          </div>
+          <h3 className={`${styles.introSection}`}>
             Welcome {userName ? userName : ""}
           </h3>
           <button
+            className={`${styles.addTaskButton}`}
             className="btn btn-primary"
             data-toggle="modal"
             data-target="#taskForm"
@@ -97,16 +153,16 @@ const Dashboard = ({
             Add A New Task
           </button>
           {userTasks.length == 0 ? (
-            <h4 style={{ textAlign: "center" }}>
+            <h4 className={styles.cautionText}>
               Your task list is empty. Click on ADD A NEW TASK button to add a
               task
             </h4>
           ) : (
             <div
               className={`${styles.tasks}`}
-              // style={{ border: "1px solid black" }}
+              //
             >
-              <div>
+              <div ref={drop1}>
                 <h3 className={`${styles.heading}`}>Backlog</h3>
                 <div>
                   {userTasks &&
@@ -132,7 +188,7 @@ const Dashboard = ({
                     })}
                 </div>
               </div>
-              <div>
+              <div ref={drop2}>
                 <h3 className={`${styles.heading}`}>To Do</h3>
                 <div>
                   {userTasks &&
@@ -155,10 +211,10 @@ const Dashboard = ({
                       } else {
                         return null;
                       }
-                    })}
+                    })}{" "}
                 </div>
               </div>
-              <div>
+              <div ref={drop3}>
                 <h3 className={`${styles.heading}`}>On Going</h3>
                 <div>
                   {userTasks &&
@@ -181,10 +237,10 @@ const Dashboard = ({
                       } else {
                         return null;
                       }
-                    })}
-                </div>{" "}
+                    })}{" "}
+                </div>
               </div>
-              <div>
+              <div ref={drop4}>
                 <h3 className={`${styles.heading}`}>Done</h3>
                 <div>
                   {userTasks &&
@@ -233,9 +289,13 @@ const Dashboard = ({
                   </h5>
                   <button
                     type="button"
-                    className="close"
+                    className="close addTaskCloseButton"
                     data-dismiss="modal"
                     aria-label="Close"
+                    onClick={() => {
+                      fetchUserTask();
+                      setVal((val) => val + 1);
+                    }}
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -243,7 +303,9 @@ const Dashboard = ({
                 <div className="modal-body">
                   <form onSubmit={submitHandler}>
                     <div className="form-group">
-                      <label htmlFor="taskName">Task Name</label>
+                      <label htmlFor="taskName">
+                        <h5>Task Name</h5>{" "}
+                      </label>
                       <input
                         type="text"
                         className="form-control"
@@ -257,9 +319,12 @@ const Dashboard = ({
                         required
                       />
                     </div>
+                    <br></br>
                     <div className="form-group">
-                      <label htmlFor="priority">Priority</label>
-
+                      <label htmlFor="priority">
+                        <h5>Priority</h5>{" "}
+                      </label>
+                      <br></br>
                       <select
                         value={priority}
                         onChange={(event) => {
@@ -271,8 +336,11 @@ const Dashboard = ({
                         <option>high</option>
                       </select>
                     </div>
+                    <br></br>
                     <div className="form-group">
-                      <label htmlFor="deadline">Deadline</label>
+                      <label htmlFor="deadline">
+                        <h5>Deadline</h5>{" "}
+                      </label>
                       <input
                         type="date"
                         className="form-control"
@@ -290,10 +358,13 @@ const Dashboard = ({
                       ADD TASK
                     </button>
                     <button
-                      style={{ marginLeft: "1rem" }}
                       type="button"
-                      className="btn btn-secondary"
+                      className={`${styles.formAddTaskButton} btn btn-secondary`}
                       data-dismiss="modal"
+                      onClick={() => {
+                        fetchUserTask();
+                        setVal((val) => val + 1);
+                      }}
                     >
                       Close
                     </button>

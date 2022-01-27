@@ -9,38 +9,54 @@
       "id": 1
     },
     {
-      "name": "Anant Rawat",
-      "userName": "Mon2",
-      "email": "anant5.rawat5@gmail.com",
+      "name": "New User",
+      "userName": "NEw User",
+      "email": "newuser@gmail.com",
       "number": "8888888888",
-      "password": "123",
+      "password": "123456",
       "id": 2
-    },
-    {
-      "name": "Gaurav Rawat",
-      "userName": "Gauraav",
-      "email": "gaurav@gmail.com",
-      "number": "8888888888",
-      "password": "123",
-      "id": 3
     }
   ],
   "userTasks": [
     {
-      "userId": 2,
-      "taskName": "zxcvzxcv",
+      "userId": 1,
+      "taskName": "Renamed",
       "priority": "low",
-      "deadLine": "2022-01-08",
+      "deadLine": "2022-01-22",
       "stage": 0,
-      "id": 5
+      "id": 1
     },
     {
       "userId": 1,
-      "taskName": "Test task 5",
-      "priority": "low",
-      "deadLine": "2022-01-22",
+      "taskName": "Test task 2",
+      "priority": "",
+      "deadLine": "2022-01-13",
       "stage": 2,
-      "id": 6
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "taskName": "Test Task3",
+      "priority": "low",
+      "deadLine": "2022-01-21",
+      "stage": 1,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "taskName": "New Task",
+      "priority": "low",
+      "deadLine": "2022-01-21",
+      "stage": 3,
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "taskName": "New Task1",
+      "priority": "medium",
+      "deadLine": "2022-01-29",
+      "stage": 0,
+      "id": 5
     }
   ]
 }

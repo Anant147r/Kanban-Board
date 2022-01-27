@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDrag } from "react-dnd";
 import styles from "./Task.module.css";
 import {
   updateUserTaskStage,
@@ -18,6 +19,14 @@ const Task = ({
   incrementValue,
   updateUserStageDetails,
 }) => {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "task",
+    item: { taskId: taskId },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
   const updateStage = (taskId, newStage) => {
     updateUserTaskStage(taskId, newStage);
     fetchUserTask();
@@ -42,6 +51,7 @@ const Task = ({
     setNewDeadLine("");
     fetchUserTask();
     incrementValue();
+    // document.querySelector(".updateUserDetailClose").click();
   };
   const [newTaskName, setNewTaskName] = useState("");
   const [newPriority, setNewPriority] = useState("low");
@@ -49,24 +59,20 @@ const Task = ({
   return (
     <div
       className={`${styles.task} container`}
-      style={{
-        border: "1px solid #CED4DA",
-        textAlign: "center",
-        padding: "1rem",
-        borderRadius: "10px",
-      }}
+      ref={drag}
+      style={{ border: isDragging ? "5px solid red" : "1px solid #ced4da" }}
     >
-      <div className={`${styles.taskName}`}>
+      <div className={`${styles.taskName} ${styles.taskDetail}`}>
         <span>Task Name - </span>
-        <span style={{ fontWeight: "600" }}>{taskName} </span>
+        <span className={styles.taskDetailText}>{taskName} </span>
       </div>
-      <div className={`${styles.taskPriority}`}>
+      <div className={`${styles.taskPriority} ${styles.taskDetail}`}>
         <span>Priority - </span>
-        <span style={{ fontWeight: "600" }}>{priority}</span>
+        <span className={styles.taskDetailText}>{priority}</span>
       </div>
-      <div className={`${styles.taskDeadline}`}>
+      <div className={`${styles.taskDeadline} ${styles.taskDetail}`}>
         <span>Deadline - </span>
-        <span style={{ fontWeight: "600" }}>{deadline}</span>
+        <span className={styles.taskDetailText}>{deadline}</span>
       </div>
       <button
         // className={`btn btn-success ${!prev ? "disabled" : ""}`}
@@ -118,7 +124,7 @@ const Task = ({
               </h5>
               <button
                 type="button"
-                className="close"
+                className="close updateUserDetailClose"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
@@ -141,7 +147,9 @@ const Task = ({
                 }}
               >
                 <div className="form-group" style={{ textAlign: "left" }}>
-                  <label htmlFor="newTaskName">Task Name</label>
+                  <label htmlFor="newTaskName">
+                    <h5>Task Name</h5>
+                  </label>
                   <input
                     type="text"
                     className="form-control"
@@ -155,8 +163,13 @@ const Task = ({
                     required
                   />
                 </div>
+                <br></br>
                 <div className="form-group" style={{ textAlign: "left" }}>
-                  <label htmlFor="newPriority">Priority</label>
+                  <label htmlFor="newPriority">
+                    {" "}
+                    <h5>Priority</h5>{" "}
+                  </label>
+                  <br></br>
                   <select
                     value={newPriority}
                     onChange={(event) => {
@@ -168,8 +181,11 @@ const Task = ({
                     <option>high</option>
                   </select>
                 </div>
+                <br></br>
                 <div className="form-group" style={{ textAlign: "left" }}>
-                  <label htmlFor="newDeadline">Deadline</label>
+                  <label htmlFor="newDeadline">
+                    <h5>Deadline</h5>
+                  </label>
                   <input
                     type="date"
                     className="form-control"

@@ -77,21 +77,6 @@ export const register = (data) => async (dispatch) => {
       // console.log(userId);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });
     }
-
-    // try {
-    //   const resUser = await axios.post("http://localhost:3000/userTasks", {
-    //     userId: 1,
-    //     // taskName: backlog4,
-    //     // "priority": "",
-    //     // "deadline": "",
-    //     // "stage": 0,
-    //     // "id": 1
-    //   });
-    //   // console.log(resUser);
-    // } catch (err) {}
-
-    // window.open("/dashboard", "_self");
-    // history.push("/dashboard");
   } catch (err) {}
 };
 
