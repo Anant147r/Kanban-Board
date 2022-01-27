@@ -29,6 +29,7 @@ const Dashboard = ({
   const [loading, setLoading] = useState(true);
   const [userTasks, setUserTasks] = useState([]);
   const [val, setVal] = useState(1);
+  // const [trashCanVisibilty,setTrashCanVisibility]
   const history = useHistory();
 
   const [{ isOver1 }, drop1] = useDrop(() => ({
@@ -59,6 +60,26 @@ const Dashboard = ({
       isOver: !!monitor.isOver(),
     }),
   }));
+  const [{ isOver }, trashDrop] = useDrop(() => ({
+    accept: "task",
+    drop: (item) => deleteTask(item.taskId),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  const deleteTask = (taskId) => {
+    var confirmation = window.confirm("Are you sure you want to delete it?");
+    // console.log(confirmation);
+    if (confirmation) {
+      deleteUserTask(taskId);
+      fetchUserTask();
+      setVal((val) => val + 1);
+    } else {
+      fetchUserTask();
+      setVal((val) => val + 1);
+    }
+  };
 
   const updateTaskStage = (taskId, newStage) => {
     updateUserTaskStage(taskId, newStage);
@@ -66,17 +87,26 @@ const Dashboard = ({
     setVal((val) => val + 1);
   };
 
+  const makeTrashCanVisible = () => {
+    document.querySelector(`.${styles.trashCan}`).style["visibility"] =
+      "visible";
+  };
+
   const addTaskToBoard1 = (taskId) => {
     updateTaskStage(taskId, 0);
+    makeTrashCanVisible();
   };
   const addTaskToBoard2 = (taskId) => {
     updateTaskStage(taskId, 1);
+    makeTrashCanVisible();
   };
   const addTaskToBoard3 = (taskId) => {
     updateTaskStage(taskId, 2);
+    makeTrashCanVisible();
   };
   const addTaskToBoard4 = (taskId) => {
     updateTaskStage(taskId, 3);
+    makeTrashCanVisible();
   };
 
   const fetchTasks = async () => {
@@ -88,7 +118,6 @@ const Dashboard = ({
       setUserTasks(res.data);
 
       setLoading(false);
-      return userTasks;
     } catch (err) {}
   };
   useEffect(() => {
@@ -134,6 +163,16 @@ const Dashboard = ({
             >
               Refresh
             </button>{" "}
+          </div>
+          <div
+            className={`${styles.trashCan}`}
+            ref={trashDrop}
+            style={{
+              border: isOver ? "5px solid red" : "1px solid black",
+              color: isOver ? "red" : "black",
+            }}
+          >
+            Trash Can
           </div>
           <h3 className={`${styles.introSection}`}>
             Welcome {userName ? userName : ""}

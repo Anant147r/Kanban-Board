@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDrag } from "react-dnd";
 import styles from "./Task.module.css";
+import styles2 from "../Dashboard.module.css";
 import {
   updateUserTaskStage,
   deleteUserTask,
@@ -27,6 +28,14 @@ const Task = ({
     }),
   }));
 
+  useEffect(() => {
+    if (isDragging === true)
+      document.querySelector(`.${styles2.trashCan}`).style["visibility"] =
+        "visible";
+    else
+      document.querySelector(`.${styles2.trashCan}`).style["visibility"] =
+        "hidden";
+  }, [isDragging]);
   const updateStage = (taskId, newStage) => {
     updateUserTaskStage(taskId, newStage);
     fetchUserTask();
