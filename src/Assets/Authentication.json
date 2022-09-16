@@ -25,6 +25,14 @@
       "deadLine": "2022-01-29",
       "stage": 0,
       "id": 5
+    },
+    {
+      "userId": 1,
+      "taskName": "Test task 2",
+      "priority": "medium",
+      "deadLine": "2022-02-11",
+      "stage": 0,
+      "id": 6
     }
   ]
 }
