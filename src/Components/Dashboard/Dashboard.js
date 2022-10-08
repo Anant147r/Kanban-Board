@@ -174,9 +174,12 @@ const Dashboard = ({
           >
             Trash Can
           </div>
-          <h3 className={`${styles.introSection}`}>
-            Welcome {userName ? userName : ""}
-          </h3>
+          <div className={`${styles.introSection}`}>
+            <h3>Welcome {userName ? userName : ""}</h3>
+            <h6 style={{ color: "red" }}>
+              Your can drag the tasks using mouse
+            </h6>
+          </div>
           <button
             className={`${styles.addTaskButton}`}
             className="btn btn-primary"
