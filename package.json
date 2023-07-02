@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "startAuthenticationServer": "npx json-server --watch ./src\\Assets\\Authentication.json",
+    "startAuthenticationServer": "json-server --watch ./src\\Assets\\Authentication.json",
     "startProject": "concurrently \" npm start \" \" npm run startAuthenticationServer  \" "
   },
   "eslintConfig": {
