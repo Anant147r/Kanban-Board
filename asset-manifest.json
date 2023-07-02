@@ -1,29 +1,29 @@
 {
   "files": {
     "main.css": "/Kanban-Board/static/css/main.aaa15299.css",
-    "main.js": "/Kanban-Board/static/js/main.54e99418.js",
+    "main.js": "/Kanban-Board/static/js/main.a7d1e019.js",
     "static/css/702.35ce9664.chunk.css": "/Kanban-Board/static/css/702.35ce9664.chunk.css",
     "static/js/702.c4464fe9.chunk.js": "/Kanban-Board/static/js/702.c4464fe9.chunk.js",
     "static/css/38.eebbb866.chunk.css": "/Kanban-Board/static/css/38.eebbb866.chunk.css",
     "static/js/38.949303a8.chunk.js": "/Kanban-Board/static/js/38.949303a8.chunk.js",
     "static/css/360.8002a18a.chunk.css": "/Kanban-Board/static/css/360.8002a18a.chunk.css",
-    "static/js/360.755f8c0f.chunk.js": "/Kanban-Board/static/js/360.755f8c0f.chunk.js",
+    "static/js/360.40f63b44.chunk.js": "/Kanban-Board/static/js/360.40f63b44.chunk.js",
     "static/js/787.98a738ba.chunk.js": "/Kanban-Board/static/js/787.98a738ba.chunk.js",
     "static/js/315.d021141d.chunk.js": "/Kanban-Board/static/js/315.d021141d.chunk.js",
     "index.html": "/Kanban-Board/index.html",
     "main.aaa15299.css.map": "/Kanban-Board/static/css/main.aaa15299.css.map",
-    "main.54e99418.js.map": "/Kanban-Board/static/js/main.54e99418.js.map",
+    "main.a7d1e019.js.map": "/Kanban-Board/static/js/main.a7d1e019.js.map",
     "702.35ce9664.chunk.css.map": "/Kanban-Board/static/css/702.35ce9664.chunk.css.map",
     "702.c4464fe9.chunk.js.map": "/Kanban-Board/static/js/702.c4464fe9.chunk.js.map",
     "38.eebbb866.chunk.css.map": "/Kanban-Board/static/css/38.eebbb866.chunk.css.map",
     "38.949303a8.chunk.js.map": "/Kanban-Board/static/js/38.949303a8.chunk.js.map",
     "360.8002a18a.chunk.css.map": "/Kanban-Board/static/css/360.8002a18a.chunk.css.map",
-    "360.755f8c0f.chunk.js.map": "/Kanban-Board/static/js/360.755f8c0f.chunk.js.map",
+    "360.40f63b44.chunk.js.map": "/Kanban-Board/static/js/360.40f63b44.chunk.js.map",
     "787.98a738ba.chunk.js.map": "/Kanban-Board/static/js/787.98a738ba.chunk.js.map",
     "315.d021141d.chunk.js.map": "/Kanban-Board/static/js/315.d021141d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aaa15299.css",
-    "static/js/main.54e99418.js"
+    "static/js/main.a7d1e019.js"
   ]
 }
