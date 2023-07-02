@@ -16,6 +16,7 @@ const Body = () => {
             <Route exact path="/" component={LazyLogin} />
             <Route exact path="/register" component={LazyRegister} />
             <Route exact path="/dashboard" component={LazyDashboard} />
+            <Route />
           </React.Suspense>
         </Switch>
       </Router>
