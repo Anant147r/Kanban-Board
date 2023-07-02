@@ -24,7 +24,7 @@ const Task = ({
     type: "task",
     item: { taskId: taskId },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging: monitor.isDragging(),
     }),
   }));
 

@@ -52,7 +52,7 @@ export const register = (data) => async (dispatch) => {
       BASE_URL + `employees?userName=${userName}`
       // `http://localhost:3000/employees?userName=${userName}`
     );
-    console.log(res1);
+    // console.log(res1);
     if (res1.data.length !== 0) {
       // console.log("User already exists");
       alert(`User with email ${email} already exists`);
@@ -77,7 +77,9 @@ export const register = (data) => async (dispatch) => {
       // console.log(userId);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.id });
     }
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const logout = () => async (dispatch) => {

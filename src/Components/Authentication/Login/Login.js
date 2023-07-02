@@ -3,12 +3,10 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../Redux/Authentication/AuthenticationActions";
 import styles from "./Login.module.css";
-// import axios from "axios";
 const Login = ({ state, loginUser }) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [isEmail, setIsEmail] = useState(false);
   const clearStateValues = () => {
     setEmail("");
     setPassword("");
@@ -16,13 +14,10 @@ const Login = ({ state, loginUser }) => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    // if (email.includes("@") === true) setIsEmail(true);
-    // else setIsEmail(false);
 
     try {
       const res = await loginUser({ email, password });
       clearStateValues();
-      // console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +25,6 @@ const Login = ({ state, loginUser }) => {
 
   useEffect(() => {
     if (state.isAuthenticated === true) {
-      // window.open("/dashboard", "_self");
       history.push("/dashboard");
     }
   }, [state.isAuthenticated]);
@@ -41,7 +35,6 @@ const Login = ({ state, loginUser }) => {
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email Address/Username</label>
           <input
-            // type="email"
             className="form-control input"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
@@ -51,9 +44,6 @@ const Login = ({ state, loginUser }) => {
               setEmail(event.target.value);
             }}
           />
-          {/* <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small> */}
         </div>
         <div className="form-group">
           <label htmlFor="exampleInputPassword1">Password</label>
@@ -68,12 +58,6 @@ const Login = ({ state, loginUser }) => {
             }}
           />
         </div>
-        {/* <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
-          </label>
-        </div> */}
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

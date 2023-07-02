@@ -181,8 +181,8 @@ const Dashboard = ({
             </h6>
           </div>
           <button
-            className={`${styles.addTaskButton}`}
-            className="btn btn-primary"
+            className={`btn btn-primary ${styles.addTaskButton}`}
+            // className=""
             data-toggle="modal"
             data-target="#taskForm"
             style={{

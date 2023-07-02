@@ -23,6 +23,14 @@
       "number": "8077826938",
       "password": "Anant",
       "id": 3
+    },
+    {
+      "name": "New",
+      "userName": "New user",
+      "email": "new@new.com",
+      "number": "8077826938",
+      "password": "123456789",
+      "id": 4
     }
   ],
   "userTasks": [
@@ -35,20 +43,28 @@
       "id": 5
     },
     {
-      "userId": 1,
-      "taskName": "Test task 2",
-      "priority": "medium",
-      "deadLine": "2022-02-11",
-      "stage": 1,
-      "id": 6
+      "userId": 4,
+      "taskName": "Task 1",
+      "priority": "low",
+      "deadLine": "2022-10-05",
+      "stage": 0,
+      "id": 8
     },
     {
       "userId": 1,
-      "taskName": "Task1",
-      "priority": "low",
-      "deadLine": "2022-09-16",
+      "taskName": "adsfadsf",
+      "priority": "medium",
+      "deadLine": "2023-06-14",
+      "stage": 0,
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "taskName": "zzcxvzcxv",
+      "priority": "",
+      "deadLine": "2023-05-31",
       "stage": 2,
-      "id": 7
+      "id": 10
     }
   ]
 }
